@@ -1,0 +1,43 @@
+define(Restore_MP,#%arg1)
+[ENABLE]
+Alloc(GetMP,128)
+Alloc(Hook,128)
+Alloc(MP_Value,4)
+Label(Return)
+Label(Normal)
+Label(return)
+
+GetMP:
+mov [MP_Value],esi
+mov [ebx+1FC],esi
+jmp return
+
+01FD4B4D: //  89 ? ? ? 00 00 50 8D ? ? E8 ? ? ? ? 8B ? ? C7 [Function Start]
+jmp GetMP
+nop
+return:
+
+Hook:
+cmp [MP_Value],Restore_MP
+jg Normal
+mov [esi+170],eax
+jmp Return
+
+Normal:
+cmp [esi+170],eax
+jmp Return
+
+010DD295: //  39 86 ? ? 00 00 7F ? 8B CE E8
+jmp Hook
+nop
+Return:
+
+[DISABLE]
+01FD4B4D:
+mov [ebx+1FC],esi
+
+010DD295:
+cmp [esi+170],eax
+
+dealloc(Hook)
+dealloc(GetMP)
