@@ -1,0 +1,7 @@
+[Enable]
+010DD460: //Familiar Disarm
+ret
+
+[Disable]
+010DD460: //  81 C1 88 13 00 00 3B [FIRST] [FUNCTION START]
+push ebp
