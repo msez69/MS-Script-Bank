@@ -1,0 +1,33 @@
+define(SummonDelay,#%arg1) // Delay for Summon Attacks in MS
+
+[ENABLE]
+alloc(Hook,128)
+label(Exit)
+
+alloc(timer,4)
+
+Hook:
+call 02404E80 // Original Opcode
+pushad
+mov edx,eax
+sub edx,[timer]
+cmp edx,SummonDelay
+jl Exit
+mov [timer],eax
+push 00 // int nAIType
+push 00 // int tCur
+mov ecx,esi // CSummoned *this
+call 017BB940 // CSummoned::TryDoingAttack: 55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 B8 ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? 33 C5 89 ? ? 53 56 57 50 8D ? ? 64 A3 00 00 00 00 89 ? ? ? ? ? C7 [Second result]
+
+Exit:
+popad
+jmp 017D0BBE+5
+
+017D0BBE:
+jmp Hook
+
+[DISABLE]
+017D0BBE: // CSummoned::Update: E8 ? ? ? ? 8B ? 8B ? ? ? ? ? 89 ? ? 85 ? 0F ? ? ? ? ? 33
+call 02404E80 // get_update_time
+
+dealloc(Hook)
