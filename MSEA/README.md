@@ -1,5 +1,5 @@
 # MSEA Script Bank
-CE Script Bank for MapleStory SEA, powering [Nexon'd Trainer](https://github.com/md35-gk/Nexond-Trainer).
+This is the main directory for MSEA CE scripts by game version.
 
 -----
 
