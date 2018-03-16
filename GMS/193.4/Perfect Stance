@@ -1,0 +1,15 @@
+[ENABLE]
+0227E33B: //85 F6 75 05 39 ? 10 74
+xor esi,esi
+nop
+nop
+
+0227E342: //address of JE below
+db EB
+
+[DISABLE]
+0227E33B:
+db 85 F6 75 05
+
+0227E342:
+db 74
