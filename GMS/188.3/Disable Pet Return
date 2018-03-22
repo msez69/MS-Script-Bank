@@ -1,0 +1,7 @@
+[Enable]
+021C0F86:
+db EB
+
+[Disable]
+021C0F86: //74 ? FF 75 ? FF 75 ? 8D
+db 74
