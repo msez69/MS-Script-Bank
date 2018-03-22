@@ -1,0 +1,8 @@
+[Enable]
+00F8FC30:
+ret
+
+[Disable]
+00F8FC30: //81 C1 88 13 00 00 3B [FUNCTION START]
+//OR Function start push ebp: 88 13 00 00 3B C8 77
+push ebp
