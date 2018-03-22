@@ -1,0 +1,7 @@
+[Enable]
+01FBDB30: // CUserLocal::SetDamaged
+db C2 2C 00
+
+[Disable]
+01FBDB30: // E8 ? ? ? ? 8B CF E8 ? ? ? ? 8B ? ? 8B ? ? 85 C0 75 ? 8B [Follow Call]
+db 55 8B EC
