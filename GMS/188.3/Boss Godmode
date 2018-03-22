@@ -1,0 +1,8 @@
+[Enable]
+01EFD2FB:
+nop
+nop
+
+[Disable]
+01EFD2FB: // 85 C0 74 ? 5F B8 01 00 00 00 5E C3 8B
+test eax,eax
