@@ -1,4 +1,4 @@
-# GMS v193.4 Scripts
+# GMS v188.3 Scripts
 Scripts courtesy of Simple Trainer
 
 -----
