@@ -1,0 +1,7 @@
+[Enable]
+00D1E656: // Remove loot animation
+db 0F 8C
+
+[Disable]
+00D1E656: // 81 ? BC 02 [Second result & address below]
+db 0F 8D
