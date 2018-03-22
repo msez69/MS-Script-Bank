@@ -1,0 +1,9 @@
+[Enable]
+define(InstantSpawn, 0119C45F) //0F 8F ? ? 00 0 8B ? ? 85 C0 74 07 8B ? E8
+
+InstantSpawn:
+db 90 90 90 90 90 90
+
+[Disable]
+InstantSpawn:
+db 0F 8F 0A 10 00 00
