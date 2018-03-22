@@ -1,0 +1,15 @@
+[Enable]
+01FC018D: //85 F6 75 05 39 ? 10 74
+xor esi,esi
+nop
+nop
+
+01FC0194: //address of JE below
+db EB
+
+[Disable]
+01FC018D:
+db 85 F6 75 05
+
+01FC0194:
+db 74
