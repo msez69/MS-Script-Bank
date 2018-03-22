@@ -1,0 +1,22 @@
+[Enable]
+alloc(Hook,128)
+alloc(Skill_ID,4)
+registersymbol(Skill_ID)
+
+Hook:
+mov [Skill_ID],eax
+push [esi+04]
+jmp 01DC5FF1+6
+
+01DC5FF1:
+jmp Hook
+db 90
+
+[Disable]
+01DC5FF1: // 89 ? ? FF ? ? 33 ? 89 ? ? ? ? ? E8 ? ? ? ? 83
+mov [ebx+38],eax
+push [esi+04]
+
+dealloc(Hook)
+dealloc(Skill_ID)
+unregistersymbol(Skill_ID)
