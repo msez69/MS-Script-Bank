@@ -1,0 +1,22 @@
+[Enable]
+alloc(IncreaseProjectileCount,128)
+
+IncreaseProjectileCount:
+mov [ebp-00001D8C],0F
+jmp 02012326+6
+
+02012326:
+jmp IncreaseProjectileCount
+db 90
+
+02014CDD+6: // 15 lines damage directly; remove the counting effect/delay
+db 0F
+
+[Disable]
+02012326: // Address inside CUserLocal::TryDoingShootAttack: E8 ? ? ? ? 89 85 ? ? ? ? 8B 85 ? ? ? ? ? 8B [Second result & address below]
+mov [ebp-00001D8C],eax
+
+02014CDD+6: // C7 ? ? ? ? ? 01 00 00 00 8B ? ? ? ? ? E8 ? ? ? ? 85 [Second result]
+db 01
+
+dealloc(IncreaseProjectileCount)
