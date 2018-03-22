@@ -1,0 +1,14 @@
+[Enable]
+0136851E: // MsInterSectRect
+db EB
+
+022FF366: // Removes Level Up Damage
+db EB
+
+[Disable]
+0136851E: //  75 ? 81 FB ? ? ? ? 75 ? 83 ? ? ? 75 ? 8B ? E8
+db 75
+
+022FF366: //  74 ? C7 87 ? ? 00 00 00 00 00 00 8B 0D
+//68 EA BA C4 04 FF [2 je above]
+db 74
