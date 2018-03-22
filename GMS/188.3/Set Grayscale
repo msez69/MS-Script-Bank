@@ -1,0 +1,28 @@
+[Enable]
+alloc(SetGrayScale,64)
+label(Exit)
+
+CreateThread(SetGrayScale)
+
+SetGrayScale:
+mov eax,[02D90030] //3D 89 13 00 00 75 ? A1 [mov below]
+test eax,eax
+je Exit
+mov [eax+1C0],08
+Exit:
+ret
+
+[Disable]
+alloc(ResetColors,64)
+label(Exit)
+
+CreateThread(ResetColors)
+
+ResetColors:
+mov eax,[02D90030] //3D 89 13 00 00 75 ? A1 [mov below]
+test eax,eax
+je Exit
+mov [eax+1C0],00
+
+Exit:
+ret
