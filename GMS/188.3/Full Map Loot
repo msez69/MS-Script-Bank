@@ -1,0 +1,55 @@
+//auto bans
+
+[Enable]
+alloc(ItemXYHook,128)
+alloc(ItemX,4)
+alloc(ItemY,4)
+
+alloc(ItemVac,128)
+
+ItemXYHook:
+cmp [esp],00F4703B // Address below
+jne PtInRect
+push eax
+mov eax,[esp+0C]
+mov [ItemX],eax
+mov eax,[esp+10]
+mov [ItemY],eax
+pop eax
+jmp PtInRect
+
+ItemVac:
+mov [esp+04],eax // tagPOINT *pt
+push ecx
+mov ecx, [ItemX]
+mov [eax],ecx // pt->x
+mov ecx, [ItemY]
+mov [eax+04],ecx // pt->y
+pop ecx
+db 55 8B EC 6A FF // Original Opcode
+jmp 00F01DD0+5
+
+02D8BFCC:
+dd ItemXYHook
+
+00F46E30:
+jmp ItemVac
+
+023166D0:
+db C2 04 00
+
+[Disable]
+02D8BFCC: // PtInRect: FF 15 ? ? ? ? 85 C0 75 ? 8D ? ? C7 ? ? ? ? ? ? E8 ? ? ? ? 8B
+dd PtInRect
+
+00F46E30: // CDropPool::TryPickUpDrop: FF 15 ? ? ? ? 85 C0 75 ? 8D ? ? C7 ? ? ? ? ? ? E8 ? ? ? ? 8B [Start]
+db 55 8B EC 6A FF
+
+023166D0: // CWvsContext::SendBoobyTrapAlert: 6A 02 ? ? E8 ? ? ? ? 8D ? ? C7 ? ? ? ? ? ? E8 [First result(CDropPool::BoobyTrapCheckPickupItem) & follow call]
+db 55 8B EC
+
+dealloc(ItemXY)
+dealloc(ItemX)
+dealloc(ItemY)
+
+dealloc(ItemVac)
