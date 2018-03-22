@@ -1,0 +1,52 @@
+[Enable]
+define(delay,#arg1)
+define(pet_item_slot,#arg2)
+
+Alloc(Hook,123)
+Label(Return)
+Label(Exit)
+Label(PetRequest)
+
+alloc(timer,4)
+timer:
+dd 0
+
+Hook:
+mov ecx,[02D699CC] // Original
+pushad
+mov esi,[esi+F948] // C2 04 00 8B 81 ? ? 00 00 8B ? ? 04 [mov opcode below]
+test esi,esi
+je Exit
+cmp [esi+04],00    // Spawn pet if no pet
+je PetRequest
+mov edx,eax
+sub edx,[timer]
+cmp edx,delay
+jl Exit
+mov [timer],eax
+
+PetRequest: //FF 75 08 8B CE E8 ? ? ? ? 5F 5E 5D C2 10 00 FF [call below]
+push pet_item_slot
+call 022CA900 // CWvsContext::SendActivatePetRequest(CWvsContext *this, int nPos)
+
+Exit:
+popad
+jmp Return
+
+020D2727: //E8 ? ? ? ? 8B 0D ? ? ? ? 8B D8 8D ? ? 50 E8 ? ? ? ? 8B 7D [move address below]
+jmp Hook
+nop
+Return:
+
+022CABBE: //Skips call to CUIEquipRenewal::SetEquipTabChange
+db EB
+
+[Disable]
+020D2727:
+mov ecx,[02D699CC]
+
+022CABBE: //74 ? 6a ? e8 ? ? ? ? 68 ? ? ? ? 8d [last]
+db 74
+
+dealloc(Hook)
+dealloc(timer)
