@@ -1,0 +1,10 @@
+//auto bans
+//blocks character packet movement
+
+[Enable]
+00B9EAEF:
+db EB
+
+[Disable]
+00B9EAEF: // 75 ? E8 ? ? ? ? 0F ? ? 85 [First result]
+db 75
