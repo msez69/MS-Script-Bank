@@ -28,7 +28,7 @@ mov [ebx+000001FC],esi
 cmp esi,[HP]
 jg HPReturn
 pushad
-mov edx,VK_CONTROL //Define HPKey Here
+mov edx,%arg3 //Define HPKey Here
 call PressKey
 popad
 jmp HPReturn
@@ -38,7 +38,7 @@ mov [edi+000001FC],ebx
 cmp ebx,[MP]
 jg MPReturn
 pushad
-mov edx,VK_RSHIFT //Define MPKey Here
+mov edx,%arg4 //Define MPKey Here
 call PressKey
 popad
 jmp MPReturn
