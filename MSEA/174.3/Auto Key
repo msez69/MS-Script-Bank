@@ -22,7 +22,7 @@ popad
 jmp return
 
 PressKey:
-mov esi,[02C03B40] // TSingletonCWvsContext
+mov esi,[0302A498] // TSingletonCWvsContext
 /*
 Mem Search Addy 55 8B EC 56 8B F1 E8 ? ? F7 FF F6 45 08 01 74 0E 68 ? ? 00 00 56 E8 ? ? ? 00 83 C4 08 8B C6 5E 5D C2 0400
 Mem Search Result Addy
