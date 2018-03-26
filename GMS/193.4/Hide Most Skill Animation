@@ -1,0 +1,17 @@
+//<removed Vellum Freeze v2 (CMob_ShowAffectedSkill)>
+define(CMob_ShowHitEffect,014E6000) // 57 8B F9 E8 ? ? ? ? 50 E8 ? ? 00 00 83 C4 04
+define(CUser_ShowSkillEffect,021C52A0) // 55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 B8 ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? 33 C5 89 45 F0 56 50 8D 45 ? 64 A3 00 00 00 00 89 8D ? ? ? ? C7 85 ? FF FF FF 00 00 00 00 [Follow Call Below]
+
+[enable]
+CMob_ShowHitEffect:
+ret 0004
+
+CUser_ShowSkillEffect:
+ret 0040
+
+[disable]
+CMob_ShowHitEffect:
+db 57 8B F9
+
+CUser_ShowSkillEffect:
+db 55 8B EC
