@@ -1,0 +1,8 @@
+define(SlideAndAttack, 00C51A52) // 81 FF DB 00 00 00 74
+[ENABLE]
+SlideAndAttack:
+db 75
+
+[DISABLE]
+SlideAndAttack:
+db 74
