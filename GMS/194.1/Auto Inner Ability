@@ -7,7 +7,7 @@ Label(ResetAbility)
 alloc(timer,4)
 
 Hook:
-mov ecx,[0312758C] // TSingleton::CWvsContext
+mov ecx,[0312658C] // TSingleton::CWvsContext
 pushad
 call 02596600 // CWvsContext::GetCharacterPotentialGrade E8 ? ? ? ? 6A 00 83 F8 01 0F 8D (address in call)
 cmp eax,3 //Legendary
@@ -21,7 +21,7 @@ jl Exit
 mov [timer],eax
 
 ResetAbility:
-mov ecx,[0312758C] // TSingleton::CWvsContext
+mov ecx,[0312658C] // TSingleton::CWvsContext
 push 00
 push 00
 push 00
@@ -37,7 +37,7 @@ jmp Hook
 nop
 Return:
 
-02606372: // "Auto Yes" E8 ? ? ? ? 83 C4 1C 83 F8 06 0F 95 ? ? 8B
+02606512: // "Auto Yes" E8 ? ? ? ? 83 C4 1C 83 F8 06 0F 95 ? ? 8B
 mov eax,6
 
 0230CC10: // "No Reset Prompt" 6A 00 6A 00 6A 00 0FB6 C0 50 [FUNCTION START]
@@ -47,7 +47,7 @@ ret 4
 02216733:
 mov ecx,[0312658C]
 
-02606372:
+02606512:
 call 02424D50
 
 0230CC10:
