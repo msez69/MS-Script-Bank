@@ -61,7 +61,7 @@ add edx,4
 jmp RejectFilter
 
 Ignore:
-cmp eax,#50000 // Added this code otherwise mesos is dropped but not shown in accept mode
+cmp eax,#%arg4 // Added this code otherwise mesos is dropped but not shown in accept mode
 jle End
 mov eax,0
 
