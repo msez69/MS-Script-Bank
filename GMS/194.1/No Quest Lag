@@ -1,0 +1,13 @@
+// May be deprecated now due to a fix of kill/loot lag by Nexon
+// Gets rid of multikill/petloot lag.
+// This has to be activated before region select. You will not be able to do any quests with this activate.
+// To deactivate: restart client
+
+[Enable]
+013AB8D0: // Do not load quest list
+// CLoadClientDataThread::InitializeQuestData: E8 ? ? ? ? 8B ? ? ? ? ? 6A 01 E8 ? ? ? ? 83 [First result & follow call]
+db C3
+
+00ABFD10: // Function is called everytime you kill/loot shit
+// CQuestMan::CheckCompleteDemand: E8 ? ? ? ? 85 ? 74 ? C7 ? ? ? ? ? ? 8B ? ? 8B [First result & follow call]
+db C2 1C 00
