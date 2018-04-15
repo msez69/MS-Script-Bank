@@ -1,22 +1,24 @@
 [enable]
-define(VK_CONTROL,001D0000)
-define(VK_RSHIFT,002A0000)
-define(VK_INSERT,01520000)
-define(VK_DELETE,01530000)
-define(VK_HOME,01470000)
-define(VK_END,014F0000)
-define(VK_PRIOR,01490000) //PageUp
-define(VK_NEXT,01510000) //PageDown
-define(VK_Z,002C0000)
-
 alloc(hook,128)
 alloc(PressKey,128)
+alloc(timer,4)
+label(update)
 label(return)
+define(Autokey, %arg1)
+define(delay, #%arg2)
+
+timer:
+dd 0
 
 hook:
-push 029633AC
+call GetTickCount
+mov edx,eax
+sub edx, [timer]
+cmp edx, delay // change delay here
+jl return
+mov [timer], eax
 pushad
-mov edx,VK_HOME //Define Key Here
+mov edx,Autokey // change key here
 call PressKey
 popad
 jmp return
@@ -34,6 +36,10 @@ push edx
 push 00
 call 02421160 // CWndMan::OnKey 55 8B EC 8B 0D ?? ?? ?? ?? 85 C9 74 ?? 83 C1 ?? [First]
 ret
+
+update:
+push 029633AC // Original opcode
+jmp return
 
 023CAA25: // CVecCtrlMob::WorkUpdateActive(only calls when in maps with mobs, useful if you get stuck in town while map rushing)
 jmp hook
