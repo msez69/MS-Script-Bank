@@ -1,3 +1,6 @@
+//auto bans
+//do not put more than 2 at a time (or set to very high delay)
+
 [ENABLE]
 01132660: //Unlimited Arrow Platter
 ret 4
