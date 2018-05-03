@@ -1,3 +1,6 @@
+//auto bans
+//there is no delay function to this. BEWARE
+
 [ENABLE]
 0112F293: //Arrow Platter ND
 db 90 90
