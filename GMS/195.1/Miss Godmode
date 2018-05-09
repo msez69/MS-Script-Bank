@@ -25,10 +25,10 @@ mov ebp,esp
 push -01
 jmp return
 
-0227C4F0: // CUserLocal::SetDamaged
+022B9C40: // CUserLocal::SetDamaged
 jmp CUserLocal__SetDamaged_Hook
 return:
 
 [DISABLE]
-0227C4F0: //55 8B EC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 81 EC ? ? ? ? A1 ? ? ? ? 33 C5 89 45 F0 53 56 57 50 8D 45 F4 64 A3 ? ? ? ? 8B D9 89 9D ? ? ? ? 8B 45 1C
+022B9C40: //55 8B EC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 81 EC ? ? ? ? A1 ? ? ? ? 33 C5 89 45 F0 53 56 57 50 8D 45 F4 64 A3 ? ? ? ? 8B D9 89 9D ? ? ? ? 8B 45 1C
 db 55 8B EC 6A FF

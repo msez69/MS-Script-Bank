@@ -6,14 +6,14 @@ alloc(MobControl,128)
 MobControl:
 mov [edi+000004A8],action
 mov eax,[edi+000004A8]
-jmp 0249B4EE+6
+jmp 024DEA6E+6
 
-0249B4EE:
+024DEA6E:
 jmp MobControl
 db 90
 
 [DISABLE]
-0249B4EE: // CVecCtrlMob::WorkUpdateActive: E9 ? ? ? ? 8B ? ? ? 00 00 83 ? ? 0F ? ? ? ? ? FF [Address below]
+024DEA6E: // CVecCtrlMob::WorkUpdateActive: E9 ? ? ? ? 8B ? ? ? 00 00 83 ? ? 0F ? ? ? ? ? FF [Address below]
 mov eax,[edi+000004A8]
 
 dealloc(MobControl)
