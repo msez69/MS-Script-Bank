@@ -7,13 +7,13 @@ Label(ResetAbility)
 alloc(timer,4)
 
 Hook:
-mov ecx,[0312658C] // TSingleton::CWvsContext
+mov ecx,[0317C6B4] // TSingleton::CWvsContext 8B 0D ?? ?? ?? ?? 50 E8 ?? ?? ?? ?? 8D 4D ?? E8 ?? ?? ?? ?? 8B 4D ?? 64 89 0D ?? ?? ?? ?? 59
 pushad
 call 02596600 // CWvsContext::GetCharacterPotentialGrade E8 ? ? ? ? 6A 00 83 F8 01 0F 8D (address in call)
 cmp eax,3 //Legendary
 je Exit
 
-call 02405230 // get_update_time: e8 ? ? ? ? 8b 0d ? ? ? ? 8b d8 8d 45 ? 50 e8 ? ? ? ? 8b 7d (address in call)
+call 02447C10 // get_update_time: e8 ? ? ? ? 8b 0d ? ? ? ? 8b d8 8d 45 ? 50 e8 ? ? ? ? 8b 7d (address in call)
 mov edx,eax
 sub edx,[timer]
 cmp edx,delay
@@ -21,35 +21,35 @@ jl Exit
 mov [timer],eax
 
 ResetAbility:
-mov ecx,[0312658C] // TSingleton::CWvsContext
+mov ecx,[0317C6B4] // TSingleton::CWvsContext
 push 00
 push 00
 push 00
 push 00
-call 02606340 // E8 ? ? ? ? 83 C4 04 E9 ? ? ? ? 68 ? ? 00 00 8d ? ? E8 ? ? ? ? FF 75 08 [function start]
+call 02649B40 // E8 ? ? ? ? 83 C4 04 E9 ? ? ? ? 68 ? ? 00 00 8d ? ? E8 ? ? ? ? FF 75 08 [function start]
 
 Exit:
 popad
 jmp Return
 
-02216733: // 56 8B F1 8B 0D ? ? ? ? E8 ? ? ? ? 85 C0 75 02
+022539B3: // 56 8B F1 8B 0D ? ? ? ? E8 ? ? ? ? 85 C0 75 02 [address of mov ecx below]
 jmp Hook
 nop
 Return:
 
-02606512: // "Auto Yes" E8 ? ? ? ? 83 C4 1C 83 F8 06 0F 95 ? ? 8B
+02649D12: // "Auto Yes" E8 ? ? ? ? 83 C4 1C 83 F8 06 0F 95 ? ? 8B
 mov eax,6
 
-0230CC10: // "No Reset Prompt" 6A 00 6A 00 6A 00 0FB6 C0 50 [FUNCTION START]
+0234A810: // "No Reset Prompt" 6A 00 6A 00 6A 00 0FB6 C0 50 [FUNCTION START]
 ret 4
 
 [Disable]
-02216733:
-mov ecx,[0312658C]
+022539B3:
+mov ecx,[0317C6B4]
 
-02606512:
-call 02424D50
+02649D12:
+call 02468260
 
-0230CC10:
+0234A810:
 push ebp
 mov ebp,esp

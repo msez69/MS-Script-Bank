@@ -5,7 +5,7 @@
 alloc(hook, 128)
 Label(skip)
 
-023C0FB0:
+02402DA0:
 jmp hook
 
 hook:
@@ -22,14 +22,14 @@ xor eax,eax
 div eax
 
 skip:
-jmp 023C123B //first jump in CUserPool::OnUserEnterField
+jmp 0240302B //first je/jmp in CUserPool::OnUserEnterField
 
 [disable]
-023C0FB0:   //CUserPool::OnUserEnterField 8D 4D D8 E8 ? ? ? ? 8D 4D D0 E8 ? ? ? ? 8B 4D F4 64 89 0D ? ? ? ? [Function Start]
+02402DA0:   //CUserPool::OnUserEnterField 8D 4D D8 E8 ? ? ? ? 8D 4D D0 E8 ? ? ? ? 8B 4D F4 64 89 0D ? ? ? ? [Function Start]
 push ebp
 mov ebp,esp
 push -01
 
 //cmp ebx,eax
-//je 023C123B  //first jmp in above function
+//je 0240302B  //first je/jmp in above function
 DeAlloc(hook)
