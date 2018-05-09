@@ -1,7 +1,7 @@
 [ENABLE]
-010984AF:
+010A7A4F:
 db F2 0F 5E
 
 [DISABLE]
-010984AF: // F2 ? ? ? ? ? ? ? 3B ? 7F
+010A7A4F: // F2 ? ? ? ? ? ? ? 3B ? 7F
 db F2 0F 59

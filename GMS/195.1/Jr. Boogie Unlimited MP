@@ -12,7 +12,7 @@ mov [MP_Value],esi
 mov [ebx+1FC],esi
 jmp return
 
-01FD556D: //  89 ? ? ? 00 00 50 8D ? ? E8 ? ? ? ? 8B ? ? C7 [Function Start]
+0200FCBD: //  89 ? ? ? 00 00 50 8D ? ? E8 ? ? ? ? 8B ? ? C7 [Function Start]
 jmp GetMP
 nop
 return:
@@ -28,16 +28,16 @@ cmp [esi+170],eax
 jmp Return
 
 // 39 86 ? ? 00 00 7F ? 8B CE E8 [new AOB?]
-010DD8C5: //  39 87 ? ? 00 00 7F ? 8B CF E8 ? ? ? ? 8B 87 ? ? 00 00 [Function Start]
+010ECE65: //  39 ?? ? ? 00 00 7F ? 8B CE E8 ? ? ? ? 8B ?? ? ? 00 00 [Function Start] [first]
 jmp Hook
 nop
 Return:
 
 [DISABLE]
-01FD556D:
+0200FCBD:
 mov [ebx+1FC],esi
 
-010DD8C5:
+010ECE65:
 cmp [esi+170],eax
 
 dealloc(Hook)

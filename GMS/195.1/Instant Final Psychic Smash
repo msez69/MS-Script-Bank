@@ -1,5 +1,5 @@
 [Enable]
-define(FinalSmash,02247C96) //74 65 0F 1F ? ? 00 00 00 00
+define(FinalSmash,022850A6) //74 65 0F 1F ? ? 00 00 00 00
 
 FinalSmash:
 db 75

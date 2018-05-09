@@ -6,14 +6,14 @@ registersymbol(lvl)
 Current_Level:
 mov ecx,[ecx+00001640]
 mov [lvl],ecx
-jmp 01B9BF67+6
+jmp 01BD6697+6
 
-01B9BF67: // 8B 89 ? ? ? ? 41 51 E8 ? ? ? ? 83 C4 10
+01BD6697: // 8B 89 ? ? ? ? 41 51 E8 ? ? ? ? 83 C4 10
 jmp Current_Level
 db 90
 
 [Disable]
-01B9BF67:
+01BD6697:
 mov ecx,[ecx+00001640]
 
 dealloc(Current_Level)
