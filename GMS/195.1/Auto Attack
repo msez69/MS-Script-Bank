@@ -49,7 +49,7 @@ or eax, ebx
 mov ecx,eax
 push ecx
 push edx
-call 024F2670 //55 8B EC 8B 0D ? ? ? ? 85 C9 74 ? 83 C1 04 8B 01 5D FF 20
+call 02535BF0 //55 8B EC 8B 0D ? ? ? ? 85 C9 74 ? 83 C1 04 8B 01 5D FF 20
 pop ecx
 pop esi
 pop edx
@@ -57,7 +57,7 @@ pop ebx
 ret 000C
 
 AutoAttack:
-cmp dword ptr [esp],022FE058 //8D 90 ?? ?? ?? ?? 83 ? ? 72 ? 3D D2 07 00 00 75 ? 80
+cmp dword ptr [esp],0233BC58 //8D 90 ?? ?? ?? ?? 83 ? ? 72 ? 3D D2 07 00 00 75 ? 80
 pushad
 jne Exit
 test eax,eax
@@ -82,14 +82,14 @@ jmp Exit
 
 Exit:
 popad
-jmp 02258F30
+jmp 022964A0
 
-02CA7584:
+02CF4AF4:
 dd AutoAttack
 
 [disable]
-02CA7584: // 4 Byte Scan jmp above
-dd 02258F30 //55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 83 EC 08 56 A1 ? ? ? ? 33 C5 50 8D ? ? 64 A3 00 00 00 00 8B 0D ? ? ? ? 85 C9 74 ? 8D
+02CF4AF4: // 4 Byte Scan jmp above
+dd 022964A0 //55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 83 EC 08 56 A1 ? ? ? ? 33 C5 50 8D ? ? 64 A3 00 00 00 00 8B 0D ? ? ? ? 85 C9 74 ? 8D
 
 dealloc(AutoAttack)
 dealloc(PressKey)
