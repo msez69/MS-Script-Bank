@@ -1,15 +1,15 @@
 [ENABLE]
-0227EBE1: //85 F6 75 05 39 ? 10 74
+022BC4E5: //85 F6 75 05 39 ? 10 74
 xor esi,esi
 nop
 nop
 
-0227EBE8: //address of JE below
+022BC4EC: //address of JE below
 db EB
 
 [DISABLE]
-0227EBE1:
+022BC4E5:
 db 85 F6 75 05
 
-0227EBE8:
+022BC4EC:
 db 74

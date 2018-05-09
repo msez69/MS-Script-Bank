@@ -1,7 +1,7 @@
 [enable]
-02CB6AEC:
+02D0413C:
 ret
 
 [disable]
-02CB6AEC: // String search Effect/BasicEff.img/MultiKill/ [First]
+02D0413C: // String search Effect/BasicEff.img/MultiKill/ [First]
 db 45
