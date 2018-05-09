@@ -1,4 +1,4 @@
-define(CLoginUtilDlg__Error,013E4000) //55 8B EC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 EC 10 53 56 57 A1 ? ? ? ? 33 C5 50 8D 45 F4 64 A3 ? ? ? ? 8B 0D ? ? ? ? 85 C9 0F 84
+define(CLoginUtilDlg__Error,0140ABC0) //55 8B EC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 83 EC 10 53 56 57 A1 ? ? ? ? 33 C5 50 8D 45 F4 64 A3 ? ? ? ? 8B 0D ? ? ? ? 85 C9 0F 84
 [Enable]
 alloc(CLoginUtilDlg__Error_Hook,128)
 label(Skip)

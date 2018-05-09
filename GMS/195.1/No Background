@@ -1,7 +1,7 @@
 [Enable]
-0143FBAE: //FF 50 ? 8B CE E8 ? ? ? ? 8B CE E8 ? ? ? ? 6A 00
+014666DE: //FF 50 ? 8B CE E8 ? ? ? ? 8B CE E8 ? ? ? ? 6A 00
 db 90 90 90
 
 [Disable]
-0143FBAE:
+014666DE:
 call dword ptr [eax+1C]

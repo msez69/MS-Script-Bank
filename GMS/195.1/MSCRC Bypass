@@ -3,7 +3,7 @@ aobscan(mscrc_bypass,55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 81 EC ? ? ? 
 label(_mscrc_bypass)
 registersymbol(_mscrc_bypass)
 
-mscrc_bypass: // CWvsContext::OnEnterField: E8 ? ? ? ? 8B ? ? 83 ? ? 8B ? 89 ? ? 8D [First result(CField::Init) & follow call]
+mscrc_bypass: // CWvsContext::OnEnterField: E8 ? ? ? ? 8B ? ? 83 ? ? 8B ? 89 ? ? 8D [First result (CField::Init) & follow call]
 _mscrc_bypass:
 db 33 C0 C3
 

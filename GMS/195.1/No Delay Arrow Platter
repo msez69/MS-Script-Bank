@@ -10,19 +10,19 @@ alloc(timer,4)
 Hook:
 pushad
 //  74 ? E8 ? ? ? ? 50 FF ? ? E8 ? ? ? ? 83 C4 08 84 C0 74
-call 02405230 //get_update_time (using this instead of actual function delay because its timer is sort of werid)
+call 02447C10 //get_update_time (using this instead of actual function delay because its timer is sort of werid)
 mov edx,eax
 sub edx,[timer]
 cmp edx,delay
 popad
 jl Exit
 mov [timer],eax
-jmp 01163BBA //disable address +6
+jmp 0117386A //disable address +6
 
 Exit:
-jmp 01163BCD //Jump to exit so you don't jump back ontop of more delay.
+jmp 0117387D //Jump to exit so you don't jump back ontop of more delay.
 
-01163BB4:
+01173864:
 jmp Hook
 nop
 Return:
@@ -30,7 +30,7 @@ Return:
 [Disable]
 Dealloc(Hook)
 
-01163BB4: // [above] 76 13 6A 00 8D
+01173864: // [above] 76 13 6A 00 8D
 sub ecx,edx
 cmp ecx,eax
-jna 01163BCD
+jna 0117387D
