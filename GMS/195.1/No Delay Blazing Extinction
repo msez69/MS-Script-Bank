@@ -1,0 +1,8 @@
+define(NDBE, 01335E05)  //  0F 84 ? ? 00 00 F2 ? ? ? ? ? 00 00 ? ? ? 8B
+[Enable]
+NDBE:
+db 90 E9
+
+[Disable]
+NDBE:
+db 0F 84

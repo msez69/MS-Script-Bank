@@ -1,0 +1,9 @@
+[Enable]
+define(Map_ID,#%s)  //Change ID here
+
+0256A031:
+mov [ebx+8E40],Map_ID
+
+[Disable]
+0256A031: //81 ? ? ? 00 00 FF C9 9A 3B 8D
+cmp [ebx+8E40],3B9AC9FF
