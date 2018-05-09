@@ -8,7 +8,7 @@ label(pet_teleport_return)
 label(return_normal)
 
 aobscan(pet_teleport_aob,FF 70 04 FF 30 8D ? ? 50 FF 15 ? ? ? ? 85 C0 0F 84 ? ? FF FF)
-aobscan(vecctrl_set_position_address,C7 ? ? ? 00 00 00 00 00 00 C3 CC CC CC CC CC 55 8B EC 8B ? 10) //55 8B EC ? ? 10 ? FF ? 10 8D ? 10 FF ? 0C 56 FF 50 40 85 C0 79 0C 68 ? ? ? ? ? ? E8 ? ? ? ?  5E FIRST
+aobscan(vecctrl_set_position_address,C7 ? ? ? 00 00 00 00 00 00 C3 CC CC CC CC CC 55 8B EC 8B ? 10) // 55 8B EC ? ? 10 ? FF ? 10 8D ? 10 FF ? 0C 56 FF 50 40 85 C0 79 0C 68 ? ? ? ? ? ? E8 ? ? ? ?  5E FIRST
 
 alloc(delay,4)
 delay:

@@ -2,7 +2,7 @@
 //1. Activate the script
 //2. load into a map to see desired results
 
-define(npcflag, 015FEDA2) //0FB6 C0 89 ? ? ? 00 00 8B ? ? ? 00 00 83 ? ? 00 0F 84
+define(npcflag, 01625B82) //0F B6 C0 89 ? ? ? 00 00 8B ? ? ? 00 00 83 ? ? 00 0F 84 [mov below]
 [enable]
 npcflag:
 mov [ebx+000001EC],%arg1 //show(1)/hide(0) npc

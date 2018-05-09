@@ -5,7 +5,7 @@ label(Teleport_End)
 CreateThread(Teleport)
 
 Teleport:
-mov esi,[03141B44] // CUserLocal: 8B 3D ? ? ? ? 8B CF F3
+mov esi,[03197D5C] // CUserLocal: 8B 3D ? ? ? ? 8B CF F3
 lea ecx,[esi+04]
 mov eax,[esi+04]
 mov eax,[eax+20]
@@ -16,7 +16,7 @@ push #%arg1 // Y
 push #%arg2 // X
 push 00
 mov ecx,eax
-call 00C5AFF0 // 55 8B EC ? ? 10 ? FF ? 10 8D ? 10 FF ? 0C 56 FF 50 40 85 C0 79 0C 68 ? ? ? ? ? ? E8 ? ? ? ? 5E [first]
+call 00C5F270 // 55 8B EC ? ? 10 ? FF ? 10 8D ? 10 FF ? 0C 56 FF 50 40 85 C0 79 0C 68 ? ? ? ? ? ? E8 ? ? ? ? 5E [first]
 
 Teleport_End:
 ret
