@@ -7,7 +7,7 @@ label(Exit)
 alloc(timer,4)
 
 Hook:
-call 02405230 // Original Opcode
+call 02447C10 // Original Opcode
 pushad
 mov edx,eax
 sub edx,[timer]
@@ -17,17 +17,17 @@ mov [timer],eax
 push 00 // int nAIType
 push 00 // int tCur
 mov ecx,esi // CSummoned *this
-call 017BC080 // CSummoned::TryDoingAttack: 55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 B8 ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? 33 C5 89 ? ? 53 56 57 50 8D ? ? 64 A3 00 00 00 00 89 ? ? ? ? ? C7 [Second result]
+call 017E3E10 // CSummoned::TryDoingAttack: 55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 B8 ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? 33 C5 89 ? ? 53 56 57 50 8D ? ? 64 A3 00 00 00 00 89 ? ? ? ? ? C7 [Second result]
 
 Exit:
 popad
-jmp 017D12FE+5
+jmp 017F928E+5
 
-017D12FE:
+017F928E:
 jmp Hook
 
 [DISABLE]
-017D12FE: // CSummoned::Update: E8 ? ? ? ? 8B ? 8B ? ? ? ? ? 89 ? ? 85 ? 0F ? ? ? ? ? 33
-call 02405230 // get_update_time
+017F928E: // CSummoned::Update: E8 ? ? ? ? 8B ? 8B ? ? ? ? ? 89 ? ? 85 ? 0F ? ? ? ? ? 33
+call 02447C10 // get_update_time
 
 dealloc(Hook)

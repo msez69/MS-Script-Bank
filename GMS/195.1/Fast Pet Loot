@@ -11,39 +11,39 @@ label(exit)
 
 GetItemXY:
 mov [ItemX],eax
-call 00847150 // original
+call 00848A70 // original
 mov [ItemY],eax
 ret
 
-01089E06:
+01099396:
 call GetItemXY
 
 Hook:
 mov edi,ecx
 push ecx
-mov ecx,[031494EC] //E8 ? ? ? ? 85 C0 74 ? 8B 0D ? ? ? ? 8D ? ? ? 00 00 ? 8D [MOV BELOW]
+mov ecx,[0319F72C] //E8 ? ? ? ? 85 C0 74 ? 8B 0D ? ? ? ? 8D ? ? ? 00 00 ? 8D [MOV BELOW]
 cmp [ecx+14],#0
 pop ecx
 je exit
 push [ItemY]
 push [ItemX]
 lea ecx,[edi+10]
-call 00DDD610 //IWzShape2D::Move 55 8B EC 56 57 FF 75 ? 8B ? FF 75 ? 57 8B 07 FF ? ? 8B F0 [FIRST]
+call 00DE3D30 //IWzShape2D::Move 55 8B EC 56 57 FF 75 ? 8B ? FF 75 ? 57 8B 07 FF ? ? 8B F0 [FIRST]
 exit:
 mov ecx,edi
-call 00C50000 // original
+call 00C54280 // original
 jmp Return
 
-02486914:
+024C9E94:
 jmp Hook
 Return:
 
 [Disable]
-01089E06: //55 8b ? ? ? 8b ? 8d ? ? e8 ? ? ? ? 8b ? ? 8b ? 89 ? e8 [below 2nd call]
-call 00847150
+01099396: //55 8b ? ? ? 8b ? 8d ? ? e8 ? ? ? ? 8b ? ? 8b ? 89 ? e8 [below 2nd call]
+call 00848A70
 
-02486914: //8B CF E8 ? ? ? ? 8B ? ? B8 01 00 00 00 5F [3RD RESULT] [CALL BELOW]
-call 00C50000
+024C9E94: //8B CF E8 ? ? ? ? 8B ? ? B8 01 00 00 00 5F [3RD RESULT] [CALL BELOW]
+call 00C54280
 
 dealloc(ItemHook)
 dealloc(ItemX)

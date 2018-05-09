@@ -1,7 +1,7 @@
 [ENABLE]
-0111E206:
+0112D8B6:
 mov eax,1
 
 [DISABLE]
-0111E206: // E8 ? ? ? ? 83 C4 ? C3 CC E8 ? ? FF FF 50 E8 ? ? ? FF 83 C4 ? C3 CC E8 ? ? FF FF 50 [FIRST] [CALL BELOW]
-call 009639D0 // update
+0112D8B6: // E8 ? ? ? ? 83 C4 ? C3 CC E8 ? ? FF FF 50 E8 ? ? ? FF 83 C4 ? C3 CC E8 ? ? FF FF 50 [FIRST] [CALL BELOW]
+call 00965DE0 // update

@@ -1,4 +1,4 @@
-define(ConstantAttack, 01335DA8) //  0F 8E ? ? 00 00 8B ? ? 81 C1 [FIRST]
+define(ConstantAttack, 0135D268) //  0F 8E ? ? 00 00 8B ? ? 81 C1 [FIRST]
 [Enable]
 ConstantAttack:
 db 90 90 90 90 90 90
