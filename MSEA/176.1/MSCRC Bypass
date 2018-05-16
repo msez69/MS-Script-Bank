@@ -1,0 +1,122 @@
+//override
+
+/*
+Credits to DBLmao & mapler for sharing the base script.
+Credits to SouthernEmblem for updating the script.
+Special thanks to the GameKiller team for making the GMS public bypass compatible with other versions of MS too.
+If you are banned while using this, YOU are the one responsible.
+Using a disposable account is advised.
+
+
+
+MSEA v176.1 MSCRC Bypass for mem-editing
+*/
+
+define(CRC1,0366BB1C)
+define(CRC2,034688A1)
+define(CRC1Reg,ecx)
+define(CRC2Reg,edx)
+define(CRC1START,00401000)
+define(CRC1END,02BF27FF)  //Get via script
+define(CRC2START,0366B8D3)
+define(CRC2END,0366BDB7)  //Get via find out what addresses is accessed breakpoint
+[ENABLE]
+alloc(Hook,1024)
+globalalloc(MemCopy,100663296)
+label(MemCopier)
+registersymbol(MemCopier)
+label(Hook1)
+label(Hook2)
+label(Hook1End)
+label(Hook2End)
+label(Hook1Ret)
+label(Hook2Ret)
+label(Copy1)
+label(Copy2)
+label(CopyExit)
+createthread(MemCopier)
+
+///////////////////////////////////////////////////////////////////////////
+
+MemCopy+5FFF000:
+MemCopier:
+cmp [MemCopier+200],1
+je CopyExit
+mov eax,CRC1START
+
+Copy1:
+mov ebx,[eax]
+mov [MemCopy+eax],ebx
+add eax, 4
+cmp eax,CRC1END
+jle Copy1
+mov eax,CRC2START
+
+Copy2:
+mov ebx,[eax]
+mov [MemCopy+eax],ebx
+add eax, 4
+cmp eax,CRC2END
+jle Copy2
+
+CopyExit:
+mov eax,Hook1
+sub eax,CRC1+5
+mov byte ptr [CRC1],E9
+mov [CRC1+1],eax        //May need to add nop in future versions
+mov DWORD ptr [CRC1+5],90909090
+mov [MemCopier+200],1
+jmp terminatethread
+
+///////////////////////////////////////////////////////////////////////////
+
+Hook:
+Hook1:
+cmp CRC1Reg,CRC1START
+jb Hook1End
+cmp CRC1Reg,CRC1END
+ja Hook1End
+add CRC1Reg,MemCopy
+jmp Hook1End
+
+Hook1End: //Original Opcodes
+add al,[ecx]
+pop ecx
+sub esp,00000002
+jmp Hook1Ret
+
+
+Hook2:
+cmp CRC2Reg,CRC2START
+jb Hook2End
+cmp CRC2Reg,CRC2END
+ja Hook2End
+add CRC2Reg,MemCopy
+jmp Hook2End
+
+Hook2End: //Original Opcodes
+mov edx,[edx]
+add [esi],edx
+mov eax,ebp
+jmp Hook2Ret
+
+CRC1+5:    //May change depending on if nop is needed DO NOT ADD NOP HERE!!!!!
+Hook1Ret:
+
+CRC2:
+jmp Hook2
+db 90
+Hook2Ret:
+
+///////////////////////////////////////////////////////////////////////////
+
+[DISABLE]
+CRC1: //Orginal opcodes
+db 02 01 59 81 EC 02 00 00 00
+
+CRC2: //Orginal opcodes
+mov edx,[edx]
+add [esi],edx
+mov eax,ebp
+
+dealloc(Hook)
