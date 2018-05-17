@@ -1,0 +1,15 @@
+[ENABLE]
+022BC725: //85 F6 75 05 39 ? 10 74
+xor esi,esi
+nop
+nop
+
+022BC72C: //address of JE below
+db EB
+
+[DISABLE]
+022BC725:
+db 85 F6 75 05
+
+022BC72C:
+db 74

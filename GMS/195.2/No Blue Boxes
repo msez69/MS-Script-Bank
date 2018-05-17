@@ -1,0 +1,8 @@
+[ENABLE]
+024682A0: //No Blue Box (so you don't crash on rope/etc)
+ret
+
+[DISABLE]
+//E8 ? ? ? ? 8B C8 E8 ? ? ? ? E8 ? ? ? ? 83 C4 1C 33 F6 EB [FIRST 2 CALLS BELOW]
+024682A0: //55 8B EC 6A FF 68 ? ? ? ? 64 A1 00 00 00 00 50 83 EC ? 53 56 57 A1 ? ? ? ? 33 C5 50 8D ? ? 64 A3 00 00 00 00 C7 ? ? 00 00 00 00 E8 ? ? ? ? 83 7D ? 00 75 ?
+push ebp

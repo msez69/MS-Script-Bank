@@ -1,0 +1,11 @@
+[Enable]
+// ZList<ZRef<CGrenade>>::RemoveAt(__POSITION *)
+define(DisableRemove, 022899D0)   // 81 ? ? ? 00 00 A9 F3 B8 00 75 ? 8B CE E8 ? ? ? ? 53 [2nd call below]
+
+DisableRemove: //Unlimited Time + Unlimited BE
+ret 4
+
+[Disable]
+DisableRemove:
+push ebp
+mov ebp,esp
