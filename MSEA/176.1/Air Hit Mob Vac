@@ -10,13 +10,13 @@ mov [esp+38],#1 //bAirhit
 //Vac to Char X
 mov eax,[031DC9B4] //CUserLocal: 8B 3D ? ? ? ? 8B CF F3
 mov eax,[eax+000141AC] //Character X Location Offset: 8d 86 ? ? ? ? 8b cf 50 e8 ? ? ? ? 5f 5e 5b EAX 3AAD0684
-add eax,#100 //Adjust X
+add eax,#%arg1 //Adjust X
 mov [esp+18],eax //nMoveEndingX
 
 //Vac to Char Y
 mov eax,[031DC9B4] //CUserLocal: 8B 3D ? ? ? ? 8B CF F3
 mov eax,[eax+000141AC+4] //Character X Location Offset+4
-add eax,#0 //Adjust Y
+add eax,#%arg2 //Adjust Y
 mov [esp+1C],eax //nMoveEndingY
 //Original Opcodes
 push ebp
