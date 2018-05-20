@@ -1,0 +1,8 @@
+define(UnlimitedAttack, 023DE1E1)
+[Enable]
+UnlimitedAttack:
+db EB
+
+[Disable]
+UnlimitedAttack:
+db 7E
