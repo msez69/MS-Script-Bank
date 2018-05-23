@@ -1,0 +1,7 @@
+[ENABLE]
+0138F9233:
+ret 10
+
+[DISABLE]
+0138F923:
+push ebp

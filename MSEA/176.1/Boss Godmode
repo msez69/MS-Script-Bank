@@ -1,0 +1,7 @@
+[ENABLE]
+01196AB6:
+mov eax,1
+
+[DISABLE]
+01196AB6:
+call 00945F90

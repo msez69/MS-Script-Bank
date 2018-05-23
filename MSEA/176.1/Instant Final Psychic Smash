@@ -1,0 +1,9 @@
+define(FinalSmash,022B7C56)
+
+[ENABLE]
+FinalSmash:
+db 75
+
+[DISABLE]
+FinalSmash:
+db 74

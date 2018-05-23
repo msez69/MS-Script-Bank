@@ -1,11 +1,10 @@
 [enable]
 //By DavHeed, ButterSmooth, at Moopler
 //auto kill maple when user enters field
-//gms 194.1
 alloc(hook, 128)
 Label(skip)
 
-02402DA0:
+02402FE0:
 jmp hook
 
 hook:
@@ -22,14 +21,14 @@ xor eax,eax
 div eax
 
 skip:
-jmp 0240302B //first je/jmp in CUserPool::OnUserEnterField
+jmp 0240326B //first je/jmp in CUserPool::OnUserEnterField
 
 [disable]
-02402DA0:   //CUserPool::OnUserEnterField 8D 4D D8 E8 ? ? ? ? 8D 4D D0 E8 ? ? ? ? 8B 4D F4 64 89 0D ? ? ? ? [Function Start]
+02402FE0:   //CUserPool::OnUserEnterField 8D 4D D8 E8 ? ? ? ? 8D 4D D0 E8 ? ? ? ? 8B 4D F4 64 89 0D ? ? ? ? [Function Start]
 push ebp
 mov ebp,esp
 push -01
 
-//cmp ebx,eax
-//je 0240302B  //first je/jmp in above function
+//cmp esi,eax
+//je 0240326B  //first je/jmp in above function
 DeAlloc(hook)
