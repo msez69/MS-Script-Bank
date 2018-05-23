@@ -1,0 +1,22 @@
+//auto bans
+//Do be warned this might cause you to get chained banned either on same computer or same ip address.
+
+[enable]
+//Created By DarkLight
+alloc(Hook,100)
+label(Return)
+
+Hook:
+mov [esi+000005BC],18
+jmp Return
+
+014A3119:
+jmp Hook
+db 90
+Return:
+
+[disable]
+014A3119:
+mov [esi+000005BC],ecx
+
+dealloc(Hook)
