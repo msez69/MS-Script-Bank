@@ -1,0 +1,21 @@
+//Spams Mechanic Homing Beacon skill
+[Enable]
+Alloc(Hook,32)
+Label(Return)
+
+Hook:
+mov [esi+150D8],#35101002
+mov eax,[esi+150D8] //nSkillID Offset
+jmp Return
+
+//CUserLocal::TryDoingReservedSkill
+023D39C9: //8B ? ? ? ? ? 85 C0 0F 84 ? ? 00 00 50 E8 ? ? ? ? 83 C4 04 84 C0
+jmp Hook
+nop
+Return:
+
+[Disable]
+023D39C9:
+mov eax,[esi+14850]
+
+dealloc(hook)
