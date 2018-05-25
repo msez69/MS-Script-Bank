@@ -1,0 +1,7 @@
+[ENABLE]
+00E83D06:
+db 0F 8C
+
+[DISABLE]
+00E83D06: // 81 ? BC 02 [Second result & address below]
+db 81 F9
