@@ -24,12 +24,12 @@ mov ebp,esp
 push -01
 jmp return
 
-01586C50:
+01586C80:
 jmp hook
 return:
 
 [DISABLE]
-01586C50:
+01586C80:
 push ebp
 mov ebp,esp
 push -01
