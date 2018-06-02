@@ -1,9 +1,4 @@
-/*
-Pet Item Teleport
-Creator Sprux
-Auto Updating
-*/
-[enable]
+[Enable]
 label(pet_teleport_restore)
 registersymbol(pet_teleport_restore)
 
@@ -58,7 +53,7 @@ mov edx,[eax+04]
 mov eax,[eax]
 jmp pet_teleport_return
 
-[disable]
+[Disable]
 pet_teleport_restore:
 mov edx,[eax+04]
 mov eax,[eax]

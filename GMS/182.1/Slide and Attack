@@ -1,0 +1,14 @@
+[enable]
+aobscan(SlideAtk,74 0b 8b cf e8 ? ? ? ? 85 c0 74 77)
+label(_SlideAtk)
+registersymbol(_SlideAtk)
+
+SlideAtk:
+_SlideAtk:
+db 75
+
+[disable]
+_SlideAtk:
+db 74
+
+unregistersymbol(_SlideAtk)

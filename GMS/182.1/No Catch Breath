@@ -1,0 +1,13 @@
+[enable]
+aobscan(NoBreath,79 ? 89 9E ? ? ? ? E8 ? ? FE FF 83)
+label(_NoBreath)
+registersymbol(_NoBreath)
+NoBreath:
+_NoBreath:
+db 78
+
+[disable]
+_NoBreath:
+db 79
+
+unregistersymbol(_NoBreath)

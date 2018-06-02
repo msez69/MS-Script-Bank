@@ -1,0 +1,11 @@
+[enable]
+aobscan(InfiniteBlasterBullets,0F 84 ?? ?? ?? ?? 8D 4C 24 ?? E8 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ??)
+label(_InfiniteBlasterBullets)
+registersymbol(_InfiniteBlasterBullets)
+InfiniteBlasterBullets:
+_InfiniteBlasterBullets:
+db 0F 85
+
+[disable]
+_InfiniteBlasterBullets:
+db 0F 84

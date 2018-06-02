@@ -1,0 +1,27 @@
+[enable]
+aobscan(SkillGrip_Addy,89 4E 01 8B 4C 24 ? 85 C9)
+define(SkillGrip_RET,SkillGrip_Addy+7)
+define(Skill_ID, #%arg1) // Skill_ID [Change This]
+alloc(SkillGrip_Hook,305)
+label(SkillGrip)
+registersymbol(SkillGrip)
+
+SkillGrip_Hook:
+mov ecx,Skill_ID
+mov [esi+01],ecx
+mov ecx,[esp+18]
+jmp SkillGrip_RET
+
+
+SkillGrip_Addy:
+SkillGrip:
+jmp SkillGrip_Hook
+nop
+nop
+
+[disable]
+dealloc(SkillGrip_Hook)
+
+SkillGrip:
+mov [esi+01],ecx
+mov ecx,[esp+18]

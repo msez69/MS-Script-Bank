@@ -1,0 +1,21 @@
+[enable]
+aobscan(NoCodex1,0F 85 ? ? ? ? 8B ? ? ? 8B ? ? 8B ? C1)
+aobscan(NoCodex2,0F 85 ? ? ? ? 83 ? ? 0F 84 ? ? ? ? 85)
+label(NoCodex_1)
+label(NoCodex_2)
+registersymbol(NoCodex_1)
+registersymbol(NoCodex_2)
+NoCodex1:
+NoCodex_1:
+db 90 E9
+NoCodex2:
+NoCodex_2:
+db 90 E9
+
+[disable]
+NoCodex_1:
+db 0F 85
+NoCodex_2:
+db 0F 85
+unregistersymbol(NoCodex_1)
+unregistersymbol(NoCodex_2)
