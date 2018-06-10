@@ -1,5 +1,5 @@
 [Enable]
-define(Map_ID,#%s)  //Change ID here
+define(Map_ID,#%arg1)  //Change ID here
 
 025ADDA1:
 mov [ebx+00008EB8],Map_ID
