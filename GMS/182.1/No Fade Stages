@@ -1,0 +1,23 @@
+[enable]
+aobscan(NoFadeStages1,0F 84 ? ? ? ? 8B 0D ? ? ? ? 3B C8 74 ? 8B)
+aobscan(NoFadeStages2,0F 84 ? ? ? ? A1 ? ? ? ? 33 ED 3B)
+label(NoFadeStages_1)
+label(NoFadeStages_2)
+registersymbol(NoFadeStages_1)
+registersymbol(NoFadeStages_2)
+NoFadeStages1:
+NoFadeStages_1:
+db 0F 85
+
+NoFadeStages2:
+NoFadeStages_2:
+db 0F 85
+
+[disable]
+NoFadeStages_1:
+db 0F 84
+
+NoFadeStages_2:
+db 0F 84
+unregistersymbol(NoFadeStages_1)
+unregistersymbol(NoFadeStages_2)

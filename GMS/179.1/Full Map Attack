@@ -1,0 +1,16 @@
+//Credit to Chubbzz
+//v179.1 - updated by flip
+[enable]
+0105EA5E: // MsInterSectRect
+db EB
+
+01F0FC61: // Removes Level Up Damage
+db EB
+
+[disable]
+0105EA5E: // E8 ? ? ? ? 83 C4 ? 85 C0 75 ? 81 BC 24 ? ? ? ? ? ? ? ? 0F 85 ? ? ? ? 83 [jne below]
+db 75
+
+01F0FC61: //89 9E ? ? ? ? 8B 0D ? ? ? ? 3B CB 74 ? ? ? ? ? ? 53 JE BELOW
+//[OR SEARCH push 04C4BAEA] Address is JE abovE
+db 74

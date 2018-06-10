@@ -1,0 +1,7 @@
+[enable]
+01BB8410: //CUser:DrawNameTags
+ret
+
+[disable]
+01BB8410:
+db 6A FF 68

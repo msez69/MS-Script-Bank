@@ -1,0 +1,14 @@
+[enable]
+aobscan(EnableDisabledButtons,8B 41 30 C3 CC CC CC CC CC CC CC CC CC CC CC CC 8B 41 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC 33 C0)
+label(_EnableDisabledButtons)
+registersymbol(_EnableDisabledButtons)
+
+EnableDisabledButtons:
+_EnableDisabledButtons:
+db 8B 41 34
+
+[disable]
+_EnableDisabledButtons:
+db 8B 41 30
+
+unregistersymbol(_EnableDisabledButtons)

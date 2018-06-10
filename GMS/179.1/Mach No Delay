@@ -1,0 +1,13 @@
+//Credits to Mach of CCPLZ
+//v179.1
+
+//Mach GND (Melee/Basic attacks)
+define(MachGND,01C8FEDB)
+
+[enable]
+MachGND:
+db EB
+
+[disable]
+MachGND:
+db 75

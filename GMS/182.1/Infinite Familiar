@@ -1,0 +1,13 @@
+[enable]
+aobscan(TryDoingAttack,83 ? ? 56 8B F1 83 BE ? ? ? ? 00 0F 84 ? ? ? ? 8B 86)
+label(_TryDoingAttack)
+registersymbol(_TryDoingAttack)
+TryDoingAttack:
+_TryDoingAttack:
+db 33 C0 C3
+
+[disable]
+_TryDoingAttack:
+db 83 EC 68
+
+unregistersymbol(_TryDoingAttack)
