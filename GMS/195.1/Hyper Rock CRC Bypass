@@ -2,7 +2,7 @@
 define(Map_ID,#%arg1)  //Change ID here
 
 025ADB31:
-mov [ebx+8E40],Map_ID
+mov [ebx+8EB8],Map_ID
 
 [Disable]
 025ADB31: //81 ? ? ? 00 00 FF C9 9A 3B 8D
