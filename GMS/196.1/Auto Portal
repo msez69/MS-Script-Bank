@@ -1,0 +1,7 @@
+[ENABLE]
+0246B9AA:
+db 90 90
+
+[DISABLE]
+0246B9AA:// CUserLocal::TryPassiveTransferField: 74 ? 8D ? ? ? ? ? E8 ? ? ? ? 85 ? 75 ? 8B ? E8 [Fifth result]
+db 74 4B

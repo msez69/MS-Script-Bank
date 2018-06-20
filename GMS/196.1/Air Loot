@@ -1,0 +1,19 @@
+[Enable]
+0113499C:
+db 90 90
+
+011349A2:
+db 90 90
+
+011349AE:
+db 90 90
+
+[Disable]
+0113499C: //74 ? 83 ? ? ? 75 ? 8B ? 2B [first]
+db 74 6E
+
+011349A2: // next jne
+db 75 68
+
+011349AE: // next jl
+db 7C 5C
