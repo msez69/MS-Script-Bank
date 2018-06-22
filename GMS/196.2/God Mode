@@ -1,0 +1,7 @@
+[enable]
+023EB860:
+db C2 30 00
+
+[disable]
+023EB860: //E8 ? ? ? ? EB ? 6A 00 6A 01 6A 00 6A 01 [Follow call]
+db 55 8B EC
