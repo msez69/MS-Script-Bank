@@ -22,7 +22,7 @@ jmp Hook
 db 90 90
 Return:
 
-02501625:
+02501625: //74 ? 8B ? ? 3B ? ? 7C ? 8B ? ? ? ? ? 53 E8 ? ? ? ? [JL BELOW]
 db 90 90
 
 [DISABLE]
