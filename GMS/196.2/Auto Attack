@@ -84,7 +84,7 @@ Exit:
 popad
 jmp 023C6E70
 
-02CF4ED4:
+02F0662C:
 dd AutoAttack
 
 [disable]
