@@ -1,0 +1,30 @@
+//Fusion attack (Use it with care)
+
+[Enable]
+alloc(Hook,512)
+label(Return)
+label(_fusion)
+registersymbol(_fusion)
+aobscan(fusion,89 ?? 81 40 89 44 24 ?? 8B 44 24 ?? 85 C0)
+
+fusion:
+
+_fusion:
+jmp Hook
+db 90 90 90
+Return:
+Hook:
+mov [ecx+eax*4],edi
+inc eax
+cmp eax,[esp+6C]
+jl Hook
+mov [esp+1C],eax
+jmp Return
+
+[Disable]
+dealloc(Hook)
+
+_fusion:
+db 89 3C 81 40 89 44 24 1C
+
+unregistersymbol(_fusion)

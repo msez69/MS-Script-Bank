@@ -1,0 +1,9 @@
+//Mobs go down in the same place vac
+
+[ENABLE]
+00B36A52: //D9 E8 DC C1 D9 C9 DD 18 8B 44 24 ?? D9 C9 DE E3
+fldz
+
+[DISABLE]
+00B36A52:
+fld1

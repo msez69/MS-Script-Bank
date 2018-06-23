@@ -1,0 +1,99 @@
+// Item Filter
+
+[enable]
+alloc(ItemFilter,256)
+alloc(ItemList,2048)
+alloc(Mesos,4)
+alloc(Mode,4)
+RegisterSymbol(Mode)
+RegisterSymbol(Mesos)
+label(Return)
+label(End)
+label(FilterMesos)
+label(RejectOrAccept)
+label(AcceptFilter)
+label(RejectFilter)
+label(Ignore)
+label(_filter)
+registersymbol(_filter)
+aobscan(filter,8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F)
+
+Mesos:
+dd #%arg1 // minimum meso
+
+Mode:
+dd #%arg2 // 0=accept, 1=reject
+
+ItemList:
+// item IDs here that you want to reject or accept
+
+%arg3
+
+dd 00 // end of list
+
+filter:
+
+// 8B ? 89 ? ? E8 ? ? ? ? 8B ? 89 ? ? E8 ? ? ? ? 0F ? ? 89 ? ? 8B ? E8 ? ? ? ? 0F
+_filter:
+jmp ItemFilter
+Return:
+
+
+ItemFilter:
+push edx
+mov edx,[Mesos]
+cmp eax,edx
+jle FilterMesos
+mov edx,ItemList
+jmp RejectOrAccept
+
+
+FilterMesos:
+mov [esi+40],0
+jmp End
+
+
+RejectOrAccept:
+cmp byte ptr [Mode],0
+je AcceptFilter
+cmp byte ptr [Mode],1
+je RejectFilter
+
+
+AcceptFilter:
+cmp eax,[edx]
+je End
+cmp dword ptr [edx],0
+je Ignore
+add edx,4
+jmp AcceptFilter
+
+
+RejectFilter:
+cmp eax,[edx]
+je Ignore
+cmp dword ptr [edx],0
+je End
+add edx,4
+jmp RejectFilter
+
+
+Ignore:
+cmp eax,#%arg4 // added this code otherwise mesos is dropped but not shown in accept mode
+jle End
+mov eax,0
+
+
+End:
+pop edx
+mov ecx,ebx // org code
+mov [esi+44],eax // org code
+jmp Return
+
+
+[disable]
+_filter:
+mov ecx,ebx
+mov [esi+44],eax
+
+unregistersymbol(_filter)

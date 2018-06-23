@@ -1,0 +1,31 @@
+[ENABLE]
+alloc(FMA,128)
+label(return_true)
+
+FMA:
+cmp [esp],00AF1E32 // E8 ? ? ? ? 83 ? ? 85 C0 75 ? 8D ? ? ? C7 ? ? ? ? ? ? ? E8 ? ? ? ? 33 [First Result] (Address Below)
+jg return_true
+mov edx,[esp+08]
+mov eax,[edx+0C]
+jmp 00AA7BA0+7
+
+return_true:
+mov eax,00000001
+ret
+
+00AA7BA0: // Follow Call
+jmp FMA
+db 90 90
+
+008006EC:
+db EB
+
+[DISABLE]
+00AA7BA0:
+mov edx,[esp+08]
+mov eax,[edx+0C]
+
+008006EC: // 89 9E ? ? ? ? 8B 0D ? ? ? ? 3B CB 74 ? 53 (je below)
+db 74
+
+dealloc(FMA)

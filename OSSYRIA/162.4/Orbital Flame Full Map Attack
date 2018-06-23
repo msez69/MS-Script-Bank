@@ -1,0 +1,80 @@
+[enable]
+alloc(find_hit_mob_in_rect_hook,128)
+label(find_hit_mob_in_rect_return)
+label(find_hit_mob_in_rect_skip)
+
+alloc(try_doing_blazewiz_attack_hook,128)
+label(try_doing_blazewiz_attack_return)
+
+alloc(mob_get_pos_hook,128)
+label(mob_get_pos_return)
+label(mob_get_pos_skip)
+
+alloc(set_mob_pos,4)
+registersymbol(set_mob_pos)
+
+set_mob_pos:
+dd 00000000
+
+00A94800:
+jmp mob_get_pos_hook
+mob_get_pos_return:
+dw 9090
+
+mob_get_pos_hook:
+cmp [set_mob_pos],00000001
+jne mob_get_pos_skip
+mov ecx,[01E1ABF4]
+lea ecx,[ecx+04]
+jmp 00650BE0
+mob_get_pos_skip:
+push esi
+lea esi,[ecx+00000958]
+jmp mob_get_pos_return
+
+008B012F:
+jmp try_doing_blazewiz_attack_hook
+try_doing_blazewiz_attack_return:
+
+try_doing_blazewiz_attack_hook:
+mov [set_mob_pos],00000001
+call 015178D0
+mov [set_mob_pos],00000000
+jmp try_doing_blazewiz_attack_return
+
+00AF2BD0: // CMobPool::FindHitMobInRect
+jmp find_hit_mob_in_rect_hook
+find_hit_mob_in_rect_return:
+dw 9090
+
+find_hit_mob_in_rect_hook:
+cmp [esp],008A382A
+jne find_hit_mob_in_rect_skip
+
+mov eax,[01E1F2CC]
+lea eax,[eax+1C]
+mov [esp+04],eax
+
+find_hit_mob_in_rect_skip:
+push FF
+push 01850468
+jmp find_hit_mob_in_rect_return
+
+[disable]
+00A94800:
+push esi
+lea esi,[ecx+00000958]
+
+008B012F:
+call 015178C0
+
+00AF2BD0:
+db 6A FF
+push 01850468
+
+unregistersymbol(set_mob_pos)
+dealloc(set_mob_pos)
+
+dealloc(mob_get_pos_hook)
+dealloc(try_doing_blazewiz_attack_hook)
+dealloc(find_hit_mob_in_rect_hook)
