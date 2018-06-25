@@ -32,16 +32,16 @@ call 027225E0 // CWndMan::OnKey 55 8B EC 8B 0D ?? ?? ?? ?? 85 C9 74 ?? 83 C1 ?? 
 ret
 
 update:
-push 02BA753E // Original opcode
+push 02CCCFC2 // Original opcode
 jmp return
 
-01B9F135: // CMob::Update (only calls when in maps with mobs, useful if you get stuck in town while map rushing)
+02651C35: // CVecCtrlMob::WorkUpdateActive(only calls when in maps with mobs, useful if you get stuck in town while map rushing)
 jmp hook
 return:
 
-[Disable]
-01B9F135: // 68 ?? ?? ?? ?? 64 A1 ?? ?? ?? ?? 50 83 EC 10 53 56 57 A1 ?? ?? ?? ?? 33 C5 50 8D 45 F4 64 A3 ?? ?? ?? ?? 8B D9 8B 0D [second]
-push 02BA753E
+[Disable]    
+02651C35: // 68 ?? ?? ?? ?? 64 A1 ?? ?? ?? ?? 50 83 EC 10 53 56 57 A1 ?? ?? ?? ?? 33 C5 50 8D 45 F4 64 A3 ?? ?? ?? ?? 8B D9 8B 0D [second]
+push 02CCCFC2
 db 64 A1 00 00 00 00
 
 dealloc(hook)
