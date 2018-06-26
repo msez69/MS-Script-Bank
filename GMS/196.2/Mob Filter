@@ -1,0 +1,118 @@
+[ENABLE]
+alloc(MobList,2048)
+
+alloc(MobFilter1,256)
+label(Filter1)
+label(FilterMobs1)
+label(Exit1)
+
+alloc(MobFilter2,256)
+label(FilterMobs2)
+label(Filter2)
+label(Exit2)
+
+MobList:
+/*dd #1210102 // Orange Mushroom */
+dd #9390620 //Corrupted Veilstone AKA the mob that spawns when fighting Gollux's head
+dd #9390621 //Corrupted Veilstone
+dd #9390622 //Corrupted Veilstone
+dd #9390623 //Corrupted Veilstone
+/*dd #8250031 // Red Dynamo - Those random flying mobs in black heaven
+dd #8250032 // Blue Dynamo
+dd #8250033 // Yellow Dynamo
+dd #8250034 // Green Dynamo
+dd #8250035 // Red Dynamo
+dd #8250036 // Blue Dynamo
+dd #8250037 // Green Dynamo
+dd #8250038 // Yellow Dynamo
+dd #8950007 // Self-destructive Chaos
+dd #8950005 // Self-destructive Yellow
+dd #8950004 // Self-destructive Blue
+dd #8950003 // Self-destructive Red
+dd #8240121 // Self-destructive Chaos
+dd #8240102 // Self-destructive Yellow
+dd #8240101 // Self-destructive Blue
+dd #8240100 // Self-destructive Red
+dd #8930001 // Chaos Vellum Tail
+dd #8930101 // Vellums Tail*/
+dd #8880102 // Shadow Zone - Annoying mob in Damien phase 2
+/*dd #9309036 // ???
+dd #8500009 //pap ground effect
+dd #8500014 //pap ground effect
+
+dd #9309300 // Finley - Tower of Oz
+dd #9309129 // Fairy - Tower of Oz
+dd #9309130 // Infuriated Fairy - Tower of Oz
+dd #9309109 // Black Flower Golem - Tower of Oz
+dd #9309103 // Black Flower Golem
+dd #9309086 // Trap - Tower of Oz*/
+dd #3503010 //dwt anti-afk
+dd #8644417 //morass - shadowdance hall anti-afk
+dd #8644415 //morass - bully blvd anti-afk
+dd #8644425 //morass - trueffet anti-afk
+dd #8641016 //vj anti-afk
+dd #8642023 // chuchu anit-afk
+dd #8643017 // lach anti-afk
+dd #8644012 //arkana anti-afk
+dd #9999999 // Invisible Mob
+dd 00000000
+
+0162751D:
+jmp MobFilter1
+
+MobFilter1:
+call 0080D700 // Original Opcodes
+push ebx
+mov ebx,MobList
+
+FilterMobs1:
+cmp eax,[ebx]
+je Filter1
+cmp [ebx],00
+je Exit1
+add ebx,4
+jmp FilterMobs1
+
+Filter1:
+pop ebx
+jmp 016276B2 // Address below last call at end of CMobPool::SetLocalMob
+
+Exit1:
+pop ebx
+jmp 0162751D+5  //hook1
+
+01626C70:
+jmp MobFilter2
+
+MobFilter2:
+push ebx
+mov ebx,MobList
+
+FilterMobs2:
+cmp eax,[ebx]
+je Filter2
+cmp [ebx],00
+je Exit2
+add ebx,4
+jmp FilterMobs2
+
+Filter2:
+pop ebx
+call 01624D00 // Original Opcodes - CMobPool::GetMob
+jmp 01626F26 // Address below last call at end of CMobPool::OnMobEnterField
+
+Exit2:
+pop ebx
+call 01624D00 // Original Opcodes - CMobPool::GetMob
+jmp 01626C70+5   //hook2
+
+[DISABLE]
+0162751D: // Address inside CMobPool::SetLocalMob: E8 ? ? ? ? 89 45 ? 85 F6 0F 85 ? ? ? ? 50
+call 0080D700 // CInPacket::Decode4
+
+01626C70: // Address inside CMobPool::OnMobEnterField: E8 ? ? ? ? 8B F8 85 FF 74 ? 6A ? 8B CF
+call 01624D00 // CMobPool::GetMob
+
+dealloc(MobFilter1)
+dealloc(MobFilter2)
+dealloc(MobList)
