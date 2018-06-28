@@ -1,0 +1,19 @@
+[Enable]
+0194FD4A:
+db 90 90
+
+0194FD50:
+db 90 90
+
+0194FDFB:
+db 90 90
+
+[Disable]
+0194FD4A: //74 ? 83 ? ? ? 75 ? 8B ? 2B
+db 74 1F
+
+0194FD50: // next jne
+db 75 23
+
+0194FDFB: // next jl
+db 7C 3C

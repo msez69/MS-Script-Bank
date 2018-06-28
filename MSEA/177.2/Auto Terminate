@@ -1,0 +1,32 @@
+[enable]
+alloc(hook, 128)
+Label(skip)
+
+02475780:
+jmp hook
+
+hook:
+cmp ebx,eax
+je skip
+pushad
+push 0
+push ffffffff
+call TerminateProcess
+test eax,eax
+popad
+jnz skip
+xor eax,eax
+div eax
+
+skip:
+jmp 0247575E //first je/jmp in CUserPool::OnUserEnterField
+
+[disable]
+02475780:   //CUserPool::OnUserEnterField 8D 4D D8 E8 ? ? ? ? 8D 4D D0 E8 ? ? ? ? 8B 4D F4 64 89 0D ? ? ? ? [Function Start]
+push ebp
+mov ebp,esp
+push -01
+
+//cmp esi,eax
+//je 02475754  //first je/jmp in above function then last arrow code
+DeAlloc(hook)

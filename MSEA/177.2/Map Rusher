@@ -1,0 +1,97 @@
+define(AddressOne,022B5CCF) //89 ? ? ? ? ? 81 ? ? ? ? ? 3F 42 0F 00 75
+define(AddressOneOpCode,00013610) //Original OpCode of AddressOne
+define(AddressTwo,0146B34A) //First: 6A ? E8 ? ? ? ? 8B ? E8 ? ? ? ? C7 ? ? ? ? ? ? 8D ? ?
+
+define(AddressTwoOpCodeCallOne,00CC8FD0) // Original call OpCode of AddressTwo
+define(AddressTwoOpCodeCallTwo,026F5DA0) // Original second call OpCode of AddressTwo
+define(AddressThree,00CC3420) //75 ? E8 ? ? ? ? 85 C0 74 ? 6A 01
+define(PortalBase,011A44DD) //Pointer: 8B 3D ? ? ? ? 8B 47 ? 85 C0
+define(CPortalList_GetPortal,01743B70) //55 8B EC 8B ? 08 85 D2 78 ? 8B ? 04 85 C0 74 ? 3B ? ? 73 ? 8B ? ? ? 5D
+define(CUserLocal,014E23D2) //Pointer: 8B 3D ? ? ? ?  8B CF F3
+define(CUserLocal_MoveToPortal,02370C40) //55 8B EC 6A 00 6A 01 FF ? ? 6A 00
+define(AutoPortal,0001428C) //mov [ecx+????],eax below, follow second call below: 75 07 8B CE E8 ? ? ? ? 6A 00 8B CE E8 ? ? ? ? 5E
+define(FixStuckOne,022B5CA6) //0F ? ? ? ? ? 89 ? ? ? ? ? 85 ? 75 ? 8B ? ? ? ? ? 8D
+define(FixStuckTwo,022B5CB4) //Address of jne below FixStuckOne
+[Enable]
+Alloc(InGameRush, 128)
+Alloc(TeleportToPortal, 128)
+
+Label(Return)
+Label(End)
+
+AddressOne:
+jmp InGameRush
+db 90
+Return:
+
+InGameRush:
+push eax
+call TeleportToPortal
+mov [edi+AddressOneOpCode],eax
+jmp Return
+
+TeleportToPortal:
+push ebp
+mov ebp, esp
+push esi
+mov esi,[ebp+08]
+test esi, esi
+js End
+mov ecx,[PortalBase]
+mov eax,CPortalList_GetPortal
+
+push esi
+xor edx, edx
+call eax
+test eax, eax
+je End
+push [eax+4]
+mov ecx,[CUserLocal]
+mov eax,CUserLocal_MoveToPortal
+xor edx, edx
+call eax
+mov ecx, [CUserLocal]
+mov [ecx+AutoPortal],1
+
+End:
+mov eax, esi
+pop esi
+pop ebp
+ret 0004
+
+FixStuckOne:
+db 90 90 90 90 90 90
+
+FixStuckTwo:
+db 90 90
+
+AddressTwo:
+db 90 90 90
+db 90 90 90
+db 90 90 90 90
+db 90 90 90 90
+
+AddressThree:
+db 90 90
+
+[Disable]
+DeAlloc(InGameRush)
+DeAlloc(TeleportToPortal)
+
+AddressOne:
+mov [edi+AddressOneOpCode],eax
+
+FixStuckOne:
+db 0F 84 BF 05 00 00
+
+AddressTwo:
+push 00
+call AddressTwoOpCodeCallOne
+mov ecx,eax
+call AddressTwoOpCodeCallTwo
+
+AddressThree:
+db 75 29
+
+FixStuckTwo:
+db 74 1F
