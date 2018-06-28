@@ -1,3 +1,5 @@
+//not working
+
 [enable]
 label(pet_teleport_restore)
 registersymbol(pet_teleport_restore)
