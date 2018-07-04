@@ -12,48 +12,7 @@ label(Filter2)
 label(Exit2)
 
 MobList:
-/*dd #1210102 // Orange Mushroom */
-dd #9390620 //Corrupted Veilstone AKA the mob that spawns when fighting Gollux's head
-dd #9390621 //Corrupted Veilstone
-dd #9390622 //Corrupted Veilstone
-dd #9390623 //Corrupted Veilstone
-/*dd #8250031 // Red Dynamo - Those random flying mobs in black heaven
-dd #8250032 // Blue Dynamo
-dd #8250033 // Yellow Dynamo
-dd #8250034 // Green Dynamo
-dd #8250035 // Red Dynamo
-dd #8250036 // Blue Dynamo
-dd #8250037 // Green Dynamo
-dd #8250038 // Yellow Dynamo
-dd #8950007 // Self-destructive Chaos
-dd #8950005 // Self-destructive Yellow
-dd #8950004 // Self-destructive Blue
-dd #8950003 // Self-destructive Red
-dd #8240121 // Self-destructive Chaos
-dd #8240102 // Self-destructive Yellow
-dd #8240101 // Self-destructive Blue
-dd #8240100 // Self-destructive Red
-dd #8930001 // Chaos Vellum Tail
-dd #8930101 // Vellums Tail*/
-dd #8880102 // Shadow Zone - Annoying mob in Damien phase 2
-/*dd #9309036 // ???
-dd #8500009 //pap ground effect
-dd #8500014 //pap ground effect
-
-dd #9309300 // Finley - Tower of Oz
-dd #9309129 // Fairy - Tower of Oz
-dd #9309130 // Infuriated Fairy - Tower of Oz
-dd #9309109 // Black Flower Golem - Tower of Oz
-dd #9309103 // Black Flower Golem
-dd #9309086 // Trap - Tower of Oz*/
-dd #3503010 //dwt anti-afk
-dd #8644417 //morass - shadowdance hall anti-afk
-dd #8644415 //morass - bully blvd anti-afk
-dd #8644425 //morass - trueffet anti-afk
-dd #8641016 //vj anti-afk
-dd #8642023 // chuchu anit-afk
-dd #8643017 // lach anti-afk
-dd #8644012 //arkana anti-afk
+%arg1
 dd #9999999 // Invisible Mob
 dd 00000000
 
