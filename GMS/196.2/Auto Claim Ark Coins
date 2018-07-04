@@ -1,0 +1,27 @@
+//Event specific
+//by OuterHaven
+//Claims the ark coins once at least one
+[Enable]
+Alloc(Hook,128)
+Label(Return)
+
+Hook:
+mov ecx,[ebx+00001454]
+test ecx,ecx
+je Return
+pushad
+mov ecx,ebx
+mov eax,[ecx]
+push 7D0
+call dword ptr [eax+20]
+popad
+jmp Return
+
+01F991CA:
+jmp Hook
+nop
+Return:
+
+[Disable]
+01F991CA:
+mov ecx,[ebx+00001454]
