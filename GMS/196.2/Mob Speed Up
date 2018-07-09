@@ -1,0 +1,22 @@
+[Enable]
+Alloc(MobSpeedUp, 128)
+Label(Return)
+
+MobSpeedUp:
+mov dword ptr [ebp-14],00
+cmp dword ptr [ebp-14],00
+lea edi,[ebx+28]
+jmp Return
+
+01684683: //83 ? ? 00 8D ? ? 89 83 ? ? 00 00 75 ? 8B
+jmp MobSpeedUp
+nop
+nop
+Return:
+
+[Disable]
+01684683:
+cmp dword ptr [ebp-14],00
+lea edi,[ebx+28]
+
+DeAlloc(MobSpeedUp)
