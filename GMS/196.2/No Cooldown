@@ -6,6 +6,6 @@ IgnoreSkillCooldowns: //Ignore Skill Cooldown (Some Skills)
 ret 04
 
 [disable]
-IgnoreSkillCooldowns:
+0246D860: //variable name doesnt work for some reason when disabling
 push ebp
 mov ebp,esp
