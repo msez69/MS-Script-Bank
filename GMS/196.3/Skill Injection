@@ -41,7 +41,7 @@ db 90 E9
 db 90 90 90 90 90 90
 
 02507D7A: //[6th addy]
-jmp 02507D9D //[7th addy] 81 BE ? ? ? ? E2 FE 7E 01 8B CE 75 ? 6A 00 6A 00 6A 04 57 FF ? ? E8 ? ? ? ? 5F C7 ? ? ? ? ? 00 00 00 00 5E ?
+jmp 02507DAD //[7th addy] 81 BE ? ? ? ? E2 FE 7E 01 8B CE 75 ? 6A 00 6A 00 6A 04 57 FF ? ? E8 ? ? ? ? 5F C7 ? ? ? ? ? 00 00 00 00 5E ?
 dw 90 90
 
 [Disable]
