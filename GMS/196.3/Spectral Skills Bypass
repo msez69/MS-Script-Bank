@@ -1,0 +1,22 @@
+//For ARK class
+//Use with No skill CDs for full effect
+[Enable]
+0252AE30:
+mov eax,0
+ret
+
+0252CF81: //Fatigue bypass
+db EB
+
+0252C63E:// Height check removed for Gust Charge
+db EB
+
+[Disable]
+
+0252AE30:
+push ebp
+mov ebp,esp
+mov eax,[ebp+08]
+
+0252C63E:
+db 74
