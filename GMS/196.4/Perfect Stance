@@ -1,0 +1,15 @@
+[ENABLE]
+023ED61B: //85 F6 75 05 39 ? 10 74
+xor esi,esi
+nop
+nop
+
+023ED622: //address of JE below
+db EB
+
+[DISABLE]
+023ED61B:
+db 85 F6 75 05
+
+023ED622:
+db 74
