@@ -11,7 +11,7 @@ label(exit)
 
 GetItemXY:
 mov [ItemX],eax
-call 00852220
+call 00853D30
 mov [ItemY],eax
 ret
 
