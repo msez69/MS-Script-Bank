@@ -1,5 +1,3 @@
-//not working
-
 [Enable]
 alloc(hook,128)
 alloc(PressKey,128)
@@ -34,16 +32,16 @@ call 027712D0 // CWndMan::OnKey 55 8B EC 8B 0D ?? ?? ?? ?? 85 C9 74 ?? 83 C1 ?? 
 ret
 
 update:
-push 02B51C18 // Original opcode
+push 02B507D6 // Original opcode
 jmp return
 
-016052F5: // CMob::Update (only calls when in maps with mobs, useful if you get stuck in town while map rushing)
+015EE965: // CMob::Update (only calls when in maps with mobs, useful if you get stuck in town while map rushing)
 jmp hook
 return:
 
 [Disable]
-016052F5: //68 ?? ?? ?? ?? 64 A1 00 00 00 00 50 81 ?? ?? ?? ?? ?? a1 ?? ?? ?? ?? 33 ?? 89 ? ? 53 56 57 50 8d ? ? 64 ? ? ? ? ? 8b ? 89 ? ? ? ? ? 33 c0  [second]
-push 02B51C18
+015EE965: //68 ? ? ? ? 64 A1 ? ? ? ? 50 81 EC ? ? ? ? A1 ? ? ? ? 33 ? 89 ? ? 53 56 57 50 8D ? ? 64 A3 ? ? ? ? 8B ? 89 ? ? 33 ? 89 ? ? 89 ? ? E8
+push 02B507D6
 db 64 A1 00 00 00 00
 
 dealloc(hook)
