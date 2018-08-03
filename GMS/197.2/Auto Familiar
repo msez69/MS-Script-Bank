@@ -27,7 +27,7 @@ jmp hook
 nop
 return:
 
-028301E0: //Summon Familiar While Soaring
+028301F0: //Summon Familiar While Soaring
 db EB
 
 [DISABLE]
