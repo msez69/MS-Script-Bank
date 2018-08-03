@@ -1,0 +1,8 @@
+(6 sloc)  157 Bytes
+[ENABLE]
+024B3C1A:
+db 90 90
+
+[DISABLE]
+024B3C1A:// CUserLocal::TryPassiveTransferField: 74 ? 8D ? ? ? ? ? E8 ? ? ? ? 85 ? 75 ? 8B ? E8 [Last result]
+db 74 4B
