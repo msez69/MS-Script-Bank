@@ -1,0 +1,36 @@
+define(_GodmodeDelay, #%arg1) //Godmode on delay time. Change it to your precious time
+
+[ENABLE]
+label(Original)
+label(Return)
+alloc(Hook,100)
+alloc(GodmodeTimer,4)
+label(GodmodeOn)
+GodmodeTimer:
+dd 0
+
+Hook:
+inc [GodmodeTimer]
+cmp [GodmodeTimer],_GodmodeDelay
+je Original
+db C2 30 00
+
+GodmodeOn:
+db C2 30 00 6A FF
+
+Original:
+db 55 8B EC 6A FF
+mov [GodmodeTimer],0
+jmp Return
+
+02432BC0: //CUserLocal::SetDamaged
+jmp Hook
+
+Return:
+
+[DISABLE]
+02432BC0: //E8 ? ? ? ? 8B CF E8 ? ? ? ? 8B ? ? 8B ? ? 85 C0 75 ? 8B CB E8 ? ? ? ? 84 C0 74 ? 85 FF [First Result Follow Call]
+db 55 8B EC 6A FF
+
+dealloc(Hook)
+dealloc(GodmodeTimer)
