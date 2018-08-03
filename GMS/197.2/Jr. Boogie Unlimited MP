@@ -39,6 +39,6 @@ mov [ebx+214],esi
 
 0119BF95:
 cmp [esi+170],eax
-
+ 
 dealloc(Hook)
 dealloc(GetMP)
