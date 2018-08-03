@@ -1,0 +1,25 @@
+//GMS v196.3
+
+[Enable]
+011349FC:
+db 90 90
+
+01134A02:
+db 90 90
+
+01134A0E:
+db 90 90
+
+[Disable]
+011349FC: //74 ? 83 ? ? ? 75 ? 8B ? 2B
+// 8b c3 2b ? ? ? ? ? 3d ? ? ? ? 7c ? 8d [je ABOVE]
+// 66 8b ? 66 c1 ? ? 66 ? ? 8d 04 ? ? ? ? ? 66 0b ? 66 89 ? 83 7d ? ? b8 [je BELOW], then next jne/jl as specified
+db 74 6E
+
+01134A02: // next jne
+// 8b c3 2b ? ? ? ? ? 3d ? ? ? ? 7c ? 8d [jne ABOVE]
+db 75 68
+
+01134A0E: // next jl
+// 8b c3 2b ? ? ? ? ? 3d ? ? ? ? 7c ? 8d [jl ABOVE]
+db 7C 5C

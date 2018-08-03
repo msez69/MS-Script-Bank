@@ -1,5 +1,3 @@
-
-//map rusher tested
 [Enable]
 Alloc(InGameRush, 128)
 Alloc(TeleportToPortal, 128)
@@ -47,7 +45,7 @@ pop ebp
 ret 0004
 
  //Fix to Maprusher getting "stuck" i.e quest requirement map like T.O.T or Cygnus Garden
-//0211E656: //  0F 84 ? ? 00 00 89 87 ? ? ? ? 85
+//023C3156: //  0F 84 ? ? 00 00 89 87 ? ? ? ? 85
 //db 90 90 90 90 90 90
 
 //Fix to Maprusher getting "stuck"
@@ -70,7 +68,7 @@ DeAlloc(TeleportToPortal)
 023C317F:
 mov [edi+00014AC8],eax
 
-//0211E656:
+//023C3156:
 //db 0F 84 C3 05 00 00
 
 023C3164:
