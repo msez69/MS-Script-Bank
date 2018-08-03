@@ -15,7 +15,7 @@ call 00853D30
 mov [ItemY],eax
 ret
 
-01139DCA:
+01139DD6:
 call GetItemXY
 
 Hook:
@@ -40,7 +40,7 @@ Return:
 
 
 [DISABLE]
-01139DCA: //55 8b ? ? ? 8b ? 8d ? ? e8 ? ? ? ? 8b ? ? 8b ? 89 ? e8 [2nd call below] 
+01139DD6: //55 8b ? ? ? 8b ? 8d ? ? e8 ? ? ? ? 8b ? ? 8b ? 89 ? e8 [2nd call below] 
 call 00853D30
 
 017CB06D: // 7E ? 85 FF 74 ? 8B ? E8 ? ? ? ? EB (call below)
