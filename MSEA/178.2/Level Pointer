@@ -1,0 +1,21 @@
+[Enable]
+alloc(Current_Level,128)
+alloc(lvl,4)
+registersymbol(lvl)
+
+Current_Level:
+mov ecx,[ecx+000012B4]
+mov [lvl],ecx
+jmp 01C8C4B7+6
+
+01C8C4B7: // 8B 89 ? ? ? ? 41 51 E8 ? ? ? ? 83 C4 10
+jmp Current_Level
+db 90
+
+[Disable]
+01C8C4B7:
+mov ecx,[ecx+000012B4]
+
+dealloc(Current_Level)
+dealloc(lvl)
+unregistersymbol(lvl)

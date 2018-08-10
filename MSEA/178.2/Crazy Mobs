@@ -1,0 +1,7 @@
+[Enable]
+50C99B6F: //D9 C0 ?? ?? ?? C0 [FIRST]
+db D9 C1
+
+[Disable]
+50C99B6F:
+db D9 C0

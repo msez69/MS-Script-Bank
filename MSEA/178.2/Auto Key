@@ -1,0 +1,54 @@
+[enable]
+alloc(hook,128)
+alloc(PressKey,128)
+alloc(timer,4)
+label(update)
+label(return)
+define(Autokey, %arg1)
+define(delay, #%arg2)
+
+timer:
+dd 0
+
+hook:
+call GetTickCount
+mov edx,eax
+sub edx, [timer]
+cmp edx, delay
+jl return
+mov [timer], eax
+pushad
+mov edx,Autokey
+call PressKey
+popad
+jmp return
+
+PressKey:
+mov esi,[0328DCF4] // TSingletonCWvsContext
+/*
+Mem Search Addy 55 8B EC 56 8B F1 E8 ? ? F7 FF F6 45 08 01 74 0E 68 ? ? 00 00 56 E8 ? ? ? 00 83 C4 08 8B C6 5E 5D C2 0400
+4 Byte Scan Result Addy. Green Result
+4 Byte Scan Result Addy. Black Result
+4 Byte Scan Result Addy. Green Result
+*/
+mov ecx,[esi+A4]
+push edx
+push 00
+call 026B0920 // CWndMan::OnKey 55 8B EC 8B 0D ?? ?? ?? ?? 85 C9 74 ?? 83 C1 ?? [First]
+ret
+
+update:
+push 02C21F32 // Original opcode
+jmp return
+
+025E13C5: // CVecCtrlMob::WorkUpdateActive(only calls when in maps with mobs, useful if you get stuck in town while map rushing)
+jmp hook
+return:
+
+[disable]
+025E13C5: // CVecCtrlMob::WorkUpdateActive 68 ?? ?? ?? ?? 64 A1 ?? ?? ?? ?? 50 83 EC ?? 56 57 A1 ?? ?? ?? ?? 33 C5 50 8D 45 ?? 64 A3 ?? ?? ?? ?? 8B F9 89 7D ?? 8B 07
+push 02C21F32
+db 64 A1 00 00 00 00
+
+dealloc(hook)
+dealloc(PressKey)

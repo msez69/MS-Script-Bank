@@ -1,0 +1,7 @@
+[ENABLE]
+025DA161: //Mob Confuse
+db 90 90 90 90 90 90
+
+[DISABLE]
+025DA161: //0F 82 ? ? 00 00 EB 03 ? ? ? F2 [second]
+db 0F 82 55 08 00 00

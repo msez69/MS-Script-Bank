@@ -1,0 +1,7 @@
+[ENABLE]
+0112E3DF: // Instant Drop
+db F2 0F 5E
+
+[DISABLE]
+0112E3DF: // F2 ? ? ? ? ? ? ? 3B ? 7F
+db F2 0F 59
