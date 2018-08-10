@@ -1,6 +1,8 @@
 # MapleStory Script Bank
 CE Script Bank for MapleStory, powering [Nexon'd Trainer](https://github.com/md35-gk/Nexond-Trainer).
 
+**Please credit this repository if you use any scripts from here. Also consider giving back to the community by posting updates to the scripts.**
+
 -----
 
 ## Submit a Pull Request
