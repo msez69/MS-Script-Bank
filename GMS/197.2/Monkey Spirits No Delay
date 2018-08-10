@@ -5,11 +5,13 @@ label(Return)
 label(Original)
 
 Hook:
+/*
 push eax
 mov eax,[03431840] //8B 0D ? ? ? ? 8D 85 ? FF FF FF 6A 00 6A 00 [FIRST] CHECK SECOND
 cmp [eax+10],00
 pop eax
 jle Original
+*/
 mov [esi+000160A8],#42120003 // [offset from below]
 mov [esi+000160A8+4],#55 // [offset from below]
 
