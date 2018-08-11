@@ -1,0 +1,8 @@
+[enable]
+0112F0F1:
+db 0F 84
+
+[disable]
+0112F0F1: //0f 85 ? ? ? ? ff 15 ? ? ? ? 8b c3
+db 0F 85
+ 

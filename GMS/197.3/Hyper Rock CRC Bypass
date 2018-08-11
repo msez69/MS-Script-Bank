@@ -1,0 +1,9 @@
+define(Map_ID,#%arg1)  //Change ID here
+
+[Enable]
+027EC943:
+mov [ebx+000091DC],Map_ID
+
+[Disable]
+027EC943: //81 ? ? ? 00 00 FF C9 9A 3B 8D
+cmp [ebx+91DC],3B9AC9FF
