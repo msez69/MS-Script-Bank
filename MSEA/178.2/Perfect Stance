@@ -1,0 +1,9 @@
+//Perfect Stance
+//MSEA v178.2
+[Enable]
+00BBB096:
+db B3 01 90
+
+[Disable]
+00BBB096: //0f 9c ? 85 db
+db 0F 9C C3
