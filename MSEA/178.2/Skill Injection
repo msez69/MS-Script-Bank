@@ -4,8 +4,8 @@
 alloc(skill_id_hook,128)
 label(skill_id_return)
 label(normal)
-define(skill_id,#00000000 ) //Change your skillID here.(Do not remove the # tag)
-define(Speed_Need,#0) //Change your speed here. 0 is fastest.(Do not remove the # tag)
+define(skill_id,#%arg1 ) //Change your skillID here.(Do not remove the # tag)
+define(Speed_Need,#%arg2) //Change your speed here. 0 is fastest.(Do not remove the # tag)
 
 alloc(delay,8)
 
