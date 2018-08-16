@@ -1,0 +1,20 @@
+//FMA Script
+//Credit to Stapled for original GMS script
+//Updated for Msea by Invinciblemeh
+
+[ENABLE]
+0162E172: // MsInterSectRect
+db EB
+
+027D78CE:
+db EB
+
+[DISABLE]
+0162E172: //  75 ? 84 ? 0F ? ? ? ? 00 8B ? ? 8B
+db 75
+
+027D78CE: //  74 ? C7 87 ? ? 00 00 00 00 00 00 8B 0D 68 EA BA C4 04 FF
+//68 EA BA C4 04 FF [2 je above]
+db 74
+
+//I've only tested this script for 10 minutes , might be unsafe (08/16/2018)
