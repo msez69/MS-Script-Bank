@@ -1,0 +1,61 @@
+define(Skill_ID,#%arg1) // 23001000 - Swift Dual Shot
+define(delay,#%arg2)
+
+[ENABLE]
+alloc(CUserLocal__Update_Hook,128)
+alloc(Time,4)
+label(Ending)
+
+Time:
+dd 0
+
+CUserLocal__Update_Hook:
+push ebp
+mov ebp,esp
+push -01
+pushad
+call GetTickCount
+mov edx,eax
+sub edx,[Time]
+cmp edx,delay // Delay in milliseconds
+jl Ending
+mov [Time],eax
+mov ebx,ecx // CUserLocal *this
+push Skill_ID // int nSkillID
+mov ecx,[0340F08C] // CSkillInfo *this: Inside CUserLocal::GetSkillLevel or breakpoint CSkillInfo::GetSkill and check ecx
+call 00B462A0 // CSkillInfo::GetSkill: 9C 9F D5 00 ? ? ? ? 9D 9F D5 00 [Follow first call above]
+mov eax,[eax+04]
+mov esi,eax
+push 00 // SKILLENTRY **ppSkillEntry
+push Skill_ID // int nSkillID
+mov ecx,ebx // CUserLocal *this
+call 024ABF50 // CUserLocal::GetSkillLevel: 68 11 12 42 00 [Follow first call above]
+push 00 // void* unknown added in GMS v.188.2
+push 00 // bool bAddAttackProc
+push 00 // int nBySummonedID
+push 00 // int nSkillCastItemPos
+push 00 // unsigned int nRandForMortalBlowAction
+push 00 // int tKeyDown
+push 00 // int bMortalBlow
+push 41 // int nShootRange0
+push eax // int nSLV
+push esi // SKILLENTRY *pSkill
+mov ecx,ebx // CUserLocal *this
+call 0246F460 // CUserLocal::TryDoingShootAttack: 0F ? ? ? ? ? 0F ? ? ? ? ? ? FF ? ? ? ? ? ? 84 [Scroll down]
+jmp Ending
+
+Ending:
+popad
+jmp 024191F0+5
+
+024191F0:
+jmp CUserLocal__Update_Hook
+
+[DISABLE]
+024191F0: // CUserLocal::Update: E8 ? ? ? ? 8B ? ? ? ? ? 8B ? ? 89 ? ? 85 ? 74 ? 83 ? ? 8D ? ? 50 FF 15 ? ? ? ? 85 ? 75 ? 8B ? ? ? ? ? 85 ? 74 ? C6 ? ? ? 8D ? ? ? FF 15 ? ? ? ? 85 ? 74 ? 8B ? 8B ? 6A 01 8B [Start]
+push ebp
+mov ebp,esp
+push -01
+
+dealloc(CUserLocal__Update_Hook)
+dealloc(Time)
