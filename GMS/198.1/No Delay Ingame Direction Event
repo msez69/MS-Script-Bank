@@ -1,0 +1,7 @@
+[Enable]
+0146DDFA: //78 ? 8B 46 08 6A 00
+db 90 90
+
+[Disable]
+0146DDFA:
+db 78 71
