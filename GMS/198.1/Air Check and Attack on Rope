@@ -1,0 +1,30 @@
+//198.1
+define(CUserLocal__TryDoingMeleeAttackOne,02500EC1) //74 ? 81 BD ? ? ? ? ? ? ? ? 75 ? 8B ? ? E8 ? ? ? ? 85 ? 74 ? 8B ? ? ? ? ? 8B ? ? ? ? ? 6A
+define(CUserLocal__TryDoingMeleeAttackTwo,02455EFE) //75 ? 8B ? ? ? ? ? 8B ? 8B ? ? ? ? ? 8B ? ? FF ? 8B ? E8
+define(CUserLocal__TryDoingMeleeAttackThree,02483ED1) //C0 ? ? 18 ? 00 00 ? ? ? ? ? ? ? 85 ? ? ? ? ? ? ? 8B ? ? ? ? ? E8 [JNE]
+define(CUserLocal__TryDoingMeleeAttackFourth,02484104) //74 ? 8B ? ? ? ? ? E8 ? ? ? ? 85 ? 74 ? 81 ? ? ? ? ? ? ? ? ? 74 ?
+[Enable]
+CUserLocal__TryDoingMeleeAttackOne:
+db EB
+
+CUserLocal__TryDoingMeleeAttackTwo:
+db EB
+
+CUserLocal__TryDoingMeleeAttackThree:
+db 90 E9
+
+CUserLocal__TryDoingMeleeAttackFourth:
+db EB
+
+[Disable]
+CUserLocal__TryDoingMeleeAttackOne:
+db 74
+
+CUserLocal__TryDoingMeleeAttackTwo:
+db 75
+
+CUserLocal__TryDoingMeleeAttackThree:
+db 0F 85
+
+CUserLocal__TryDoingMeleeAttackFourth:
+db 74

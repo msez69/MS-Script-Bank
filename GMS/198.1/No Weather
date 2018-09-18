@@ -1,0 +1,10 @@
+//198.1
+define(CMapLoadableRestoreWeather,0156D4E3) //E8 ? ? ? ? 8B ? E8 ? ? ? ? 6A ? 8B ? E8 ? ? ? ? 51
+define(CMapLoadableRestoreWeatherOpCode,015811F0) //Weather Opcode
+[Enable]
+CMapLoadableRestoreWeather:
+db 90 90 90 90 90
+
+[Disable]
+CMapLoadableRestoreWeather:
+call CMapLoadableRestoreWeatherOpCode
