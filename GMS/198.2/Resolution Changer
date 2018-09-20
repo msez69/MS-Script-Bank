@@ -1,0 +1,57 @@
+[ENABLE]
+alloc(ResolutionChanger, 128)
+label(AlreadyChanged)
+alloc(height,4)
+alloc(width,4)
+alloc(VariantClearAddy,4)
+alloc(ResolutionChangerAddy,4)
+registersymbol(height)
+registersymbol(width)
+
+VariantClearAddy:
+dd OLEAUT32.VariantClear
+
+ResolutionChangerAddy:
+dd ResolutionChanger
+
+width:
+dd #%arg1
+
+height:
+dd #%arg2
+
+ResolutionChanger:
+pushad
+mov edi,[03418E00]  //first MOV 68 58 02 00 00 68 20 03 00 00 8B 0D ? ? ? ? E8
+mov eax, [edi+84F8] // 50 E8 ? ? ? ? 83 ? ? 8B ? ? ? ? ? 5F 5E 8B ? 5D C3 [Second]
+cmp eax, [width]
+je AlreadyChanged
+mov eax,[edi+84FC] // width + 4
+cmp eax,[height]
+je AlreadyChanged
+mov ecx, [height]
+mov edx, [width]
+push 00
+push ecx
+push edx
+mov ecx,edi
+call 02819A40 //  55 8b ec 51 53 57 89 ? ? E8 ? ? ? ? 8B ? 08
+
+AlreadyChanged:
+popad
+jmp dword ptr [VariantClearAddy]
+
+027789E5:
+call dword ptr [ResolutionChangerAddy]
+
+[DISABLE]
+027789E5: //ff 15 ? ? ? ? 8b 07 8b cf 56
+call dword ptr [02DB23A8]
+
+dealloc(ResolutionChanger)
+dealloc(heigh)
+dealloc(width)
+dealloc(VariantClearAddy)
+dealloc(ResolutionChangerAddy)
+unregistersymbol(height)
+unregistersymbol(width)
