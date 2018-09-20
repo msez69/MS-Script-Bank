@@ -1,0 +1,20 @@
+[enable]
+alloc(Hook,32)
+label(Return)
+
+Hook:
+mov ecx,[03418E00] // CWvsContext: 8B 0D ? ? ? ? 50 E8 ? ? ? ? 8D ? ? E8 ? ? ? ? 8B
+call 027C8990 // CWvsContext::ClearFieldUI: 8B ? ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ? E8 ? ? ? ? FF [Fourth result(CQuarterViewMap::Init) & follow call below]
+db 59 5F 5E 5B 8B E5 // Original Opcode
+jmp Return
+
+018F9112:
+jmp Hook
+db 90
+Return:
+
+[disable]
+018F9112: // CStage::FadeIn: 0F 84 ? ? ? ? 8B 35 ? ? ? ? 85 F6 74 ? 8B CE E8 ? ? ? ? 84 [follow je & hook at pop ecx below]
+db 59 5F 5E 5B 8B E5
+
+dealloc(Hook)

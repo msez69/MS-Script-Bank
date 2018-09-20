@@ -1,0 +1,18 @@
+define(SKILLLEVELDATA___ZtlSecureGet_nBulletCount,02451090) //89 85 ? ? ? ? 8B 85 ? ? ? ? 99 8B 8D ? ? ? ? 8B B5 ? ? ? ? 03 ? ? ? 13
+define(SKILLLEVELDATA___ZtlSecureGet_nBulletCountOpCode,000010CC) //nBulletCount Opcode
+[Enable]
+alloc(IncreaseBulletCount,128)
+
+IncreaseBulletCount:
+mov [ebp-SKILLLEVELDATA___ZtlSecureGet_nBulletCountOpCode],0F
+jmp SKILLLEVELDATA___ZtlSecureGet_nBulletCount+6
+
+SKILLLEVELDATA___ZtlSecureGet_nBulletCount:
+jmp IncreaseBulletCount
+db 90
+
+[Disable]
+SKILLLEVELDATA___ZtlSecureGet_nBulletCount:
+mov [ebp-SKILLLEVELDATA___ZtlSecureGet_nBulletCountOpCode],eax
+
+dealloc(IncreaseBulletCount)

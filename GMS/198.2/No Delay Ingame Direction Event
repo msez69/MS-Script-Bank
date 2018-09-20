@@ -1,0 +1,7 @@
+[Enable]
+0146DE0A: //78 ? 8B 46 08 6A 00
+db 90 90
+
+[Disable]
+0146DE0A:
+db 78 71

@@ -1,0 +1,15 @@
+[ENABLE]
+0243C409: //85 F6 75 05 39 ? 10 74
+xor esi,esi
+nop
+nop
+
+0243C410: //address of JE below
+db EB
+
+[DISABLE]
+0243C409:
+db 85 F6 75 05
+
+0243C410:
+db 74

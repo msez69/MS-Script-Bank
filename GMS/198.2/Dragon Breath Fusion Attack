@@ -1,0 +1,8 @@
+[enable]
+01131CE1:
+db 0F 84
+
+[disable]
+01131CE1: //0f 85 ? ? ? ? ff 15 ? ? ? ? 8b c3
+db 0F 85
+ 
