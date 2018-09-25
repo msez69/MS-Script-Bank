@@ -1,0 +1,19 @@
+[Enable]
+019F519A:
+db 90 90
+
+019F51A0:
+db 90 90
+
+019F524B:
+db 90 90
+
+[Disable]
+019F519A: //74 ? 83 ? ? ? 75 ? 8B ? 2B
+db 74 1F
+
+019F51A0: // next jne
+db 75 23
+
+019F524B: // next jl
+db 7C 3C
