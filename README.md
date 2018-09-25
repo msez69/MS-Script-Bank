@@ -1,12 +1,14 @@
 # MapleStory Script Bank
 CE Script Bank for MapleStory, powering [Nexon'd Trainer](https://github.com/md35-gk/Nexond-Trainer).
 
-**Please credit this repository if you use any scripts from here. Also consider giving back to the community by posting updates to the scripts.**
+**Keep it public: Reference any use of these scripts back to this script bank. Consider submitting a pull request to help update or add scripts.**
+
+No need to use Cheat Engine -- Nexon'd Trainer can automatically retrieve all *supported scripts*. Download it and try it out!
 
 -----
 
 ## Submit a Pull Request
-- Want to help update scripts? Fork a copy of the Script Bank to your GitHub account, make appropriate changes, and then [submit a pull request](https://github.com/md35-gk/GMS-Script-Bank/pulls).
+- Want to help update or add new scripts? Fork a copy of the Script Bank to your GitHub account, make appropriate changes, and then [submit a pull request](https://github.com/md35-gk/GMS-Script-Bank/compare).
 - Your changes will be reviewed (but not tested, so make sure it actually works) and approved or rejected within 24 hours.
 - Please keep in mind the following:
 
