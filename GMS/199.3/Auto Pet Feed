@@ -1,0 +1,24 @@
+[ENABLE]
+02515DBB: //don't push the extra shit (pet index)
+db 90
+call 0285C840 //first [function start] : E8 ? ? ? ? E8 ? ? ? ? 83 ? ? 8B ? ? 64 89 0D 00 00 00 00 59 5F 5E 5B 8B E5 5D C2 08 00 68
+
+//patch out clientsided checks for pet feed skill
+//or: 2B ? ? ? ? ? 3D ? ? ? ? 0F 82 [LAST] JB BELOW
+02515C59:
+db 90 90 90 90 90 90
+
+//below under test cx,ax
+02515CCF: //74 0C 8B CF E8 ? ? ? FF 83 F8 ?
+db 90 90
+
+[DISABLE]
+02515DBB: //8B ? ? ? ? ? 53 56 50 E8 ? ? ? ? 8B ? ? 64 ? ? ? ? ? ? [Push eax below]
+push eax
+call 0285CA10
+
+02515C59: //0F 82 ? 02 00 00 E8
+db 0F 82 16 02 00 00
+
+02515CCF:
+db 74 0C
