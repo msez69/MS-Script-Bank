@@ -1,0 +1,7 @@
+[Enable]
+006FDD23: //D9 C0 ?? ?? ?? C0 [FIRST]
+db D9 C1
+
+[Disable]
+006FDD23:
+db D9 C0
