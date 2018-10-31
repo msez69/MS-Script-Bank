@@ -1,0 +1,10 @@
+[ENABLE]
+01629E22: //75 ? 8D ? ? 8B ? E8 ? ? ? ? 8B ? E8 ? ? ? ? 85 ? 0F 84 ? ? ? ? 8B
+jmp 0162A3EE //8B ? ? ? ? ? 85 C0 0F 84 ? ? 00 00 2B ? 0F 89 ? ? ? ? C7 ? ? 00 00 00 00 8D
+//backtrack from jmp above
+
+[DISABLE]
+01629E22:
+db 75 0A 8D 50 FA
+mov ecx, edi
+call 0168C590 //update call as well

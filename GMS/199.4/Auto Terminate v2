@@ -1,0 +1,38 @@
+[enable]
+//By SunCat, DavHeed, ButterSmooth, at Moopler
+//auto kill maple when threshold of user count is exceeded
+//e.g. 0 means no one allowed; 1 means it will terminate when 3 players are on the same map
+alloc(hook, 128)
+Label(Return)
+Label(return_original)
+
+025EF030:
+jmp hook
+Return:
+
+hook:
+pushad
+mov ecx,[034D0C34] //TSingleton<CUserPool> - 8B 0D ?? ?? ?? ?? 83 ?? ?? ?? 0F 85
+lea ecx,[ecx+A8] //m_lUserRemote
+call 0085A4D0 //TSecType::GetData<long> - E8 ?? ?? ?? ?? 8B ?? ?? 3B ?? 74 ?? C7 [Follow call]
+cmp eax,#%arg1
+popad
+jle return_original
+push 0
+push ffffffff
+call TerminateProcess
+xor eax,eax
+div eax
+
+return_original:
+push ebp
+mov ebp,esp
+push -01
+jmp Return
+
+[disable]
+025EF030:   //CUserPool::OnUserEnterField 8D 4D D8 E8 ? ? ? ? 8D 4D D0 E8 ? ? ? ? 8B 4D F4 64 89 0D [Function Start]
+push ebp
+mov ebp,esp
+push -01
+dealloc(hook)
