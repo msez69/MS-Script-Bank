@@ -1,7 +1,7 @@
 [ENABLE]
-011E2C26:
+01294AC6:
 mov eax,1
 
 [DISABLE]
-011E2C26: // E8 ? ? ? ? 83 C4 04 C3 CC FF B1 ? ? 00 00 E8 ? ? ? FF 83 C4 04 C3 CC FF B1 ? ? 00 00
-call 0095A3E0 // update
+01294AC6: // E8 ? ? ? ? 83 C4 04 C3 CC FF B1 ? ? 00 00 E8 ? ? ? FF 83 C4 04 C3 CC FF B1 ? ? 00 00
+call 009A00B0 // update
