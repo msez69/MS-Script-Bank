@@ -8,19 +8,19 @@ If you are banned while using this, YOU are the one responsible.
 Using a disposable account is advised.
 
 
-MSEA v179.2 MSCRC Bypass for mem-editing
+MSEA v180.2 MSCRC Bypass for mem-editing
 v4.0
 */
 
-define(CRC1,037DB86E)
-define(CRC2,034C1EBA)
-define(CRC1Reg,ebx)
-define(CRC2Reg,ecx)
-define(CRC1CHANGE,6) // 5 + NOP needed in hexadecimal
-define(CRC2CHANGE,9) // 5 + NOP needed in hexadecimal
+define(CRC1,03AA5965)
+define(CRC2,03860DC4)
+define(CRC1Reg,ecx)
+define(CRC2Reg,eax)
+define(CRC1CHANGE,5) // 5 + NOP needed in hexadecimal
+define(CRC2CHANGE,5) // 5 + NOP needed in hexadecimal
 
 define(CRC1START,00401000)
-define(CRC1END,032FC000)  //Get via script or search for 320 bytes of 0
+define(CRC1END,0428F000)  //Get via script or search for 320 bytes of 0
 
 define(CRC2START,CRC1-800)
 define(CRC2END,CRC1+800)
